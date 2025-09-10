@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::get('/post', function () {
+    return view('post');
+})->name('post');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
