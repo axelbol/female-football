@@ -99,6 +99,148 @@
             </div>
         </section>
 
+        <!-- New Story Section ---->
+        <section class="py-20 bg-white dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        Latest Story
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        Fresh from the pitch - the newest addition to our community of inspiring women
+                    </p>
+                </div>
+
+                <div class="max-w-4xl mx-auto">
+                    <!-- Large Story Card -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                            <div class="h-64 lg:h-full bg-gradient-to-br from-rose-400 to-orange-500"></div>
+                            <div class="p-8 lg:p-12 flex flex-col justify-center">
+                                <div class="mb-4">
+                                    <span class="inline-block bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-sm font-medium px-3 py-1 rounded-full">
+                                        New Story
+                                    </span>
+                                </div>
+                                <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                    Breaking Barriers in Professional Football
+                                </h3>
+                                <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                    "From being the only girl in youth leagues to signing my first professional contract, this journey taught me that persistence beats talent when talent doesn't persist..."
+                                </p>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center">
+                                            <span class="text-white font-bold text-sm">AL</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-emerald-600 dark:text-emerald-400 font-semibold block">
+                                                Alexandra Lopez
+                                            </span>
+                                            <span class="text-sm text-gray-500 dark:text-gray-400">
+                                                2 hours ago
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+                                        Read Story
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Stories Section -->
+        <section class="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                        Latest Stories
+                    </h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                        Recent additions from our growing community of women making their mark
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Latest Story Card 1 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="h-40 bg-gradient-to-br from-violet-400 to-purple-500"></div>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="inline-block bg-violet-100 dark:bg-violet-900 text-violet-800 dark:text-violet-200 text-xs font-medium px-2 py-1 rounded-full">
+                                    Recent
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                                Youth Academy Success
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                                "Building the next generation of female footballers through dedicated coaching and mentorship programs..."
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 bg-violet-600 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-bold text-xs">JK</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-violet-600 dark:text-violet-400 font-medium text-sm block">
+                                            Jessica Kim
+                                        </span>
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">
+                                            1 day ago
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 text-sm font-medium">
+                                    Read More →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Latest Story Card 2 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="h-40 bg-gradient-to-br from-amber-400 to-orange-500"></div>
+                        <div class="p-6">
+                            <div class="mb-3">
+                                <span class="inline-block bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs font-medium px-2 py-1 rounded-full">
+                                    Recent
+                                </span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                                International Debut Dream
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                                "The moment I put on my national team jersey for the first time, all those years of hard work finally made sense..."
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-bold text-xs">RC</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-amber-600 dark:text-amber-400 font-medium text-sm block">
+                                            Rosa Chen
+                                        </span>
+                                        <span class="text-xs text-gray-500 dark:text-gray-400">
+                                            3 days ago
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="#" class="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 text-sm font-medium">
+                                    Read More →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Featured Stories Section -->
         <section id="stories" class="py-20 bg-white/50 dark:bg-gray-900/50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
