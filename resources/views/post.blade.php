@@ -55,11 +55,11 @@
         <section class="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
             <!-- Hero Image -->
             <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                     alt="Women's football team celebrating" 
+                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                     alt="Women's football team celebrating"
                      class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                
+
                 <!-- Back to Posts Button - Floating -->
                 <div class="absolute top-6 left-6">
                     <a href="#" class="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-sm text-gray-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white transition-colors shadow-lg">
@@ -94,8 +94,8 @@
                     <!-- Author and Date Info -->
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-t border-b border-gray-200 dark:border-gray-700">
                         <div class="flex items-center space-x-4 mb-4 sm:mb-0">
-                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b601?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80" 
-                                 alt="Alexandra Lopez" 
+                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                                 alt="Alexandra Lopez"
                                  class="w-12 h-12 rounded-full object-cover">
                             <div>
                                 <h3 class="font-semibold text-gray-900 dark:text-white">Alexandra Lopez</h3>
@@ -125,11 +125,11 @@
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-6">
                         The Early Days: Fighting for Recognition
                     </h2>
-                    
+
                     <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         Growing up in a small town where football was considered "a boys' game," I faced my first challenge before I even stepped onto a pitch. At age 7, I remember standing at the edge of the local football field, watching the boys practice, knowing I could play just as well – if not better – than half of them.
                     </p>
-                    
+
                     <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         My parents were supportive, but the local coaches were skeptical. "Girls don't have the physical strength," they'd say, or "Football is too rough for girls." But I was determined. I practiced every day in our backyard, perfecting my touches, working on my speed, and building the mental resilience that would serve me throughout my career.
                     </p>
@@ -140,8 +140,8 @@
 
                     <!-- Middle Image -->
                     <div class="my-12">
-                        <img src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                             alt="Young women training on football field" 
+                        <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                             alt="Young women training on football field"
                              class="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg">
                         <p class="text-sm text-gray-600 dark:text-gray-400 text-center mt-4 italic">
                             Training with dedication: Every practice session was an opportunity to prove myself
@@ -152,11 +152,11 @@
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-6">
                         The Professional Breakthrough: Making Dreams Reality
                     </h2>
-                    
+
                     <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         Years of dedication finally paid off when I received my first professional contract at age 19. The moment I held that contract in my hands, I thought about that 7-year-old girl watching from the sidelines, dreaming of this exact moment.
                     </p>
-                    
+
                     <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                         Professional football brought new challenges: higher stakes, more intense training, and the pressure to perform at the highest level consistently. But it also brought incredible opportunities – to inspire young girls, to be part of a growing movement in women's football, and to push the boundaries of what's possible.
                     </p>
@@ -182,17 +182,17 @@
                             <span class="text-sm font-medium text-gray-700 dark:text-gray-300">Share this story:</span>
                             <div class="flex space-x-3">
                                 <!-- Facebook Share -->
-                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" 
-                                   target="_blank" 
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}"
+                                   target="_blank"
                                    class="inline-flex items-center justify-center w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                                     </svg>
                                 </a>
-                                
+
                                 <!-- Twitter Share -->
-                                <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}&text=Breaking Barriers in Professional Football" 
-                                   target="_blank" 
+                                <a href="https://twitter.com/intent/tweet?url={{ url()->current() }}&text=Breaking Barriers in Professional Football"
+                                   target="_blank"
                                    class="inline-flex items-center justify-center w-10 h-10 bg-sky-500 hover:bg-sky-600 text-white rounded-lg transition-colors">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
@@ -214,7 +214,7 @@
                 <!-- Related Posts Section -->
                 <div class="border-t border-gray-200 dark:border-gray-700 pt-16 pb-20">
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">You might also like</h3>
-                    
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <!-- Related Post 1 -->
                         <div class="group cursor-pointer">
@@ -231,7 +231,7 @@
                                 <span>5 min read</span>
                             </div>
                         </div>
-                        
+
                         <!-- Related Post 2 -->
                         <div class="group cursor-pointer">
                             <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200"></div>
