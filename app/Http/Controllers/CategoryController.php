@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index(): View
     {
-        $categories = Category::latest()->paginate(15);
+        $categories = Category::withCount('posts')->latest()->paginate(15);
 
         return view('categories.index', compact('categories'));
     }
@@ -39,6 +39,8 @@ class CategoryController extends Controller
 
     public function edit(Category $category): View
     {
+        $category->loadCount('posts');
+
         return view('categories.edit', compact('category'));
     }
 
@@ -52,6 +54,12 @@ class CategoryController extends Controller
 
     public function destroy(Category $category): RedirectResponse
     {
+        // Check if category has posts
+        if ($category->posts()->count() > 0) {
+            return redirect()->route('categories.index')
+                ->with('error', 'Cannot delete category that contains posts. Please move or delete all posts first.');
+        }
+
         $category->delete();
 
         return redirect()->route('categories.index')

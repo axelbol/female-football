@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -24,6 +25,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+});
+
+Route::middleware(['auth', 'editor'])->group(function () {
+    Route::resource('categories', CategoryController::class);
 });
 
 Route::middleware(['auth'])->group(function () {

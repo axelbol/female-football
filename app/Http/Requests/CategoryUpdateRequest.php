@@ -16,8 +16,9 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         $categoryId = $this->route('category')?->id ?? $this->route('id');
+        $category = $this->route('category');
 
-        return [
+        $rules = [
             'name' => ['required', 'string', 'max:255'],
             'slug' => [
                 'nullable',
@@ -29,6 +30,17 @@ class CategoryUpdateRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean']
         ];
+
+        // Add custom validation for is_active if category has posts
+        if ($category && $category->posts()->count() > 0) {
+            $rules['is_active'][] = function ($attribute, $value, $fail) use ($category) {
+                if (!$value && $category->is_active) {
+                    $fail('Cannot deactivate category that has posts assigned to it.');
+                }
+            };
+        }
+
+        return $rules;
     }
 
     protected function prepareForValidation(): void
