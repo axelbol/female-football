@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
+
     protected $fillable = [
         'title',
         'slug',
@@ -32,6 +34,15 @@ class Post extends Model
             'is_published' => 'boolean',
             'published_at' => 'datetime',
             'meta_data' => 'array',
+        ];
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
         ];
     }
 

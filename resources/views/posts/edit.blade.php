@@ -21,36 +21,19 @@
                     @csrf
                     @method('PUT')
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                        <div>
-                            <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                {{ __('Title') }} <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text"
-                                   name="title"
-                                   id="title"
-                                   value="{{ old('title', $post->title) }}"
-                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('title') border-red-500 @enderror"
-                                   required>
-                            @error('title')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div>
-                            <label for="slug" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                {{ __('Slug') }} <span class="text-red-500">*</span>
-                            </label>
-                            <input type="text"
-                                   name="slug"
-                                   id="slug"
-                                   value="{{ old('slug', $post->slug) }}"
-                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('slug') border-red-500 @enderror"
-                                   required>
-                            @error('slug')
-                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                            @enderror
-                        </div>
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            {{ __('Title') }} <span class="text-red-500">*</span>
+                        </label>
+                        <input type="text"
+                               name="title"
+                               id="title"
+                               value="{{ old('title', $post->title) }}"
+                               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('title') border-red-500 @enderror"
+                               required>
+                        @error('title')
+                            <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div>

@@ -30,21 +30,6 @@
                         @enderror
                     </div>
 
-                    <div>
-                        <label for="slug" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                            {{ __('Slug') }}
-                        </label>
-                        <input type="text"
-                               name="slug"
-                               id="slug"
-                               value="{{ old('slug') }}"
-                               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('slug') border-red-500 @enderror"
-                               placeholder="{{ __('Auto-generated from name if left empty') }}">
-                        @error('slug')
-                            <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
-                        @enderror
-                        <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __('URL-friendly version of the name') }}</p>
-                    </div>
 
                     <div>
                         <label for="color" class="block text-sm font-medium text-gray-700 dark:text-gray-300">

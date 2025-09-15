@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
-use Illuminate\Validation\Rule;
 
 class CategoryUpdateRequest extends FormRequest
 {
@@ -15,17 +13,10 @@ class CategoryUpdateRequest extends FormRequest
 
     public function rules(): array
     {
-        $categoryId = $this->route('category')?->id ?? $this->route('id');
         $category = $this->route('category');
 
         $rules = [
             'name' => ['required', 'string', 'max:255'],
-            'slug' => [
-                'nullable',
-                'string',
-                'max:255',
-                Rule::unique('categories', 'slug')->ignore($categoryId)
-            ],
             'color' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'is_active' => ['nullable', 'boolean']
@@ -41,14 +32,5 @@ class CategoryUpdateRequest extends FormRequest
         }
 
         return $rules;
-    }
-
-    protected function prepareForValidation(): void
-    {
-        if (!$this->filled('slug') && $this->filled('name')) {
-            $this->merge([
-                'slug' => Str::slug($this->name)
-            ]);
-        }
     }
 }
