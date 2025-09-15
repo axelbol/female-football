@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
@@ -29,6 +30,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'editor'])->group(function () {
     Route::resource('categories', CategoryController::class);
+    Route::resource('posts', PostController::class);
 });
 
 Route::middleware(['auth'])->group(function () {
