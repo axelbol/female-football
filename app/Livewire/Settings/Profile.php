@@ -14,13 +14,39 @@ class Profile extends Component
 
     public string $email = '';
 
+    public string $bio = '';
+
+    public string $title = '';
+
+    public string $avatar = '';
+
+    public string $country = '';
+
+    public string $position = '';
+
+    public string $team = '';
+
+    public array $social_links = [];
+
+    public bool $is_author = false;
+
     /**
      * Mount the component.
      */
     public function mount(): void
     {
-        $this->name = Auth::user()->name;
-        $this->email = Auth::user()->email;
+        $user = Auth::user();
+
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->bio = $user->bio ?? '';
+        $this->title = $user->title ?? '';
+        $this->avatar = $user->avatar ?? '';
+        $this->country = $user->country ?? '';
+        $this->position = $user->position ?? '';
+        $this->team = $user->team ?? '';
+        $this->social_links = $user->social_links ?? [];
+        $this->is_author = $user->is_author;
     }
 
     /**
@@ -32,7 +58,6 @@ class Profile extends Component
 
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-
             'email' => [
                 'required',
                 'string',
@@ -41,6 +66,14 @@ class Profile extends Component
                 'max:255',
                 Rule::unique(User::class)->ignore($user->id),
             ],
+            'bio' => ['nullable', 'string', 'max:1000'],
+            'title' => ['nullable', 'string', 'max:255'],
+            'avatar' => ['nullable', 'string', 'max:255'],
+            'country' => ['nullable', 'string', 'max:255'],
+            'position' => ['nullable', 'string', 'max:255'],
+            'team' => ['nullable', 'string', 'max:255'],
+            'social_links' => ['nullable', 'array'],
+            'is_author' => ['boolean'],
         ]);
 
         $user->fill($validated);
