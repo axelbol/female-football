@@ -19,20 +19,36 @@
             </div>
         </div>
 
-        <div class="grid gap-6 lg:grid-cols-2">
+        <div class="grid gap-6 lg:grid-cols-3">
             <!-- User Information Card -->
-            <div class="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div class="lg:col-span-2 rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
                 <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('User Information') }}</h2>
                 
                 <div class="flex items-start gap-4">
-                    <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gray-200 text-xl font-medium text-gray-700 dark:bg-gray-600 dark:text-gray-200">
-                        {{ $user->initials() }}
-                    </div>
+                    @if($user->avatar)
+                        <img class="h-16 w-16 rounded-xl object-cover" src="{{ $user->avatar }}" alt="{{ $user->name }}">
+                    @else
+                        <div class="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-gray-200 text-xl font-medium text-gray-700 dark:bg-gray-600 dark:text-gray-200">
+                            {{ $user->initials() }}
+                        </div>
+                    @endif
                     <div class="flex-1 space-y-3">
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Name') }}</label>
                             <p class="mt-1 text-sm text-gray-900 dark:text-white">{{ $user->name }}</p>
                         </div>
+                        @if($user->title)
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Title') }}</label>
+                                <p class="mt-1 text-sm text-gray-900 dark:text-white">{{ $user->title }}</p>
+                            </div>
+                        @endif
+                        @if($user->position)
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Position') }}</label>
+                                <p class="mt-1 text-sm text-gray-900 dark:text-white">{{ $user->position }}</p>
+                            </div>
+                        @endif
                         <div>
                             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Email') }}</label>
                             <p class="mt-1 text-sm text-gray-900 dark:text-white">{{ $user->email }}</p>
@@ -52,6 +68,14 @@
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ __('Not verified') }}</p>
                             </div>
                         @endif
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Author Status') }}</label>
+                            @if($user->is_author)
+                                <p class="mt-1 text-sm text-green-600 dark:text-green-400">{{ __('Verified Author') }}</p>
+                            @else
+                                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ __('Not an author') }}</p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,6 +117,53 @@
                     </div>
                 @endif
             </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="grid gap-6 lg:grid-cols-2">
+            @if($user->bio || $user->team || $user->country)
+                <div class="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+                    <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('Profile Details') }}</h2>
+                    <div class="space-y-3">
+                        @if($user->bio)
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Bio') }}</label>
+                                <p class="mt-1 text-sm text-gray-900 dark:text-white">{{ $user->bio }}</p>
+                            </div>
+                        @endif
+                        @if($user->team)
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Team') }}</label>
+                                <p class="mt-1 text-sm text-gray-900 dark:text-white">{{ $user->team }}</p>
+                            </div>
+                        @endif
+                        @if($user->country)
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">{{ __('Country') }}</label>
+                                <p class="mt-1 text-sm text-gray-900 dark:text-white">{{ $user->country }}</p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            @endif
+
+            @if($user->social_links && count($user->social_links) > 0)
+                <div class="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+                    <h2 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('Social Links') }}</h2>
+                    <div class="space-y-3">
+                        @foreach($user->social_links as $platform => $link)
+                            @if($link)
+                                <div class="flex items-center gap-3">
+                                    <span class="text-sm font-medium text-gray-700 dark:text-gray-300 capitalize">{{ $platform }}:</span>
+                                    <a href="{{ $link }}" target="_blank" class="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300">
+                                        {{ $link }}
+                                    </a>
+                                </div>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            @endif
         </div>
 
         <!-- Activity Summary -->

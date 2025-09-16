@@ -37,6 +37,14 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'bio' => 'nullable|string|max:1000',
+            'title' => 'nullable|string|max:255',
+            'avatar' => 'nullable|string|max:255',
+            'country' => 'nullable|string|max:255',
+            'position' => 'nullable|string|max:255',
+            'team' => 'nullable|string|max:255',
+            'social_links' => 'nullable|array',
+            'is_author' => 'boolean',
             'roles' => 'array',
             'roles.*' => 'exists:roles,id'
         ]);
@@ -44,6 +52,14 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
+            'bio' => $request->bio,
+            'title' => $request->title,
+            'avatar' => $request->avatar,
+            'country' => $request->country,
+            'position' => $request->position,
+            'team' => $request->team,
+            'social_links' => $request->social_links,
+            'is_author' => $request->boolean('is_author'),
         ]);
 
         if ($request->has('roles')) {

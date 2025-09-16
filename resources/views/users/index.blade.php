@@ -31,7 +31,16 @@
                                 {{ __('Email') }}
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                {{ __('Title/Position') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                {{ __('Team/Country') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                                 {{ __('Roles') }}
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                                {{ __('Author') }}
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 dark:text-gray-400">
                                 {{ __('Joined') }}
@@ -46,18 +55,41 @@
                             <tr class="hover:bg-gray-50 dark:hover:bg-gray-700">
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex items-center">
-                                        <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gray-200 text-sm font-medium text-gray-700 dark:bg-gray-600 dark:text-gray-200">
-                                            {{ $user->initials() }}
-                                        </div>
+                                        @if($user->avatar)
+                                            <img class="h-10 w-10 rounded-lg object-cover" src="{{ $user->avatar }}" alt="{{ $user->name }}">
+                                        @else
+                                            <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gray-200 text-sm font-medium text-gray-700 dark:bg-gray-600 dark:text-gray-200">
+                                                {{ $user->initials() }}
+                                            </div>
+                                        @endif
                                         <div class="ml-4">
                                             <div class="text-sm font-medium text-gray-900 dark:text-white">
                                                 {{ $user->name }}
                                             </div>
+                                            @if($user->bio)
+                                                <div class="text-xs text-gray-500 dark:text-gray-400 truncate max-w-xs">
+                                                    {{ Str::limit($user->bio, 40) }}
+                                                </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm text-gray-900 dark:text-gray-300">{{ $user->email }}</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm text-gray-900 dark:text-white">{{ $user->title }}</div>
+                                    @if($user->position)
+                                        <div class="text-xs text-gray-500 dark:text-gray-400">{{ $user->position }}</div>
+                                    @endif
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @if($user->team)
+                                        <div class="text-sm text-gray-900 dark:text-white">{{ $user->team }}</div>
+                                    @endif
+                                    @if($user->country)
+                                        <div class="text-xs text-gray-500 dark:text-gray-400">{{ $user->country }}</div>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="flex flex-wrap gap-1">
@@ -76,6 +108,17 @@
                                             </span>
                                         @endforelse
                                     </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    @if($user->is_author)
+                                        <span class="inline-flex rounded-full bg-green-100 px-2 py-1 text-xs font-semibold text-green-800 dark:bg-green-900/20 dark:text-green-400">
+                                            {{ __('Yes') }}
+                                        </span>
+                                    @else
+                                        <span class="inline-flex rounded-full bg-gray-100 px-2 py-1 text-xs font-semibold text-gray-800 dark:bg-gray-700 dark:text-gray-300">
+                                            {{ __('No') }}
+                                        </span>
+                                    @endif
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
                                     {{ $user->created_at->format('M d, Y') }}
@@ -109,7 +152,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5" class="px-6 py-12 text-center">
+                                <td colspan="8" class="px-6 py-12 text-center">
                                     <div class="text-gray-500 dark:text-gray-400">
                                         <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
