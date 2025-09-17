@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Her Game - Stories of Women in Football</title>
+        <title>{{ $post->title }} - Her Game</title>
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -55,14 +55,20 @@
         <section class="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
             <!-- Hero Image -->
             <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                     alt="Women's football team celebrating"
-                     class="w-full h-full object-cover">
+                @if($post->hero_image)
+                    <img src="{{ $post->hero_image }}"
+                         alt="{{ $post->title }}"
+                         class="w-full h-full object-cover">
+                @else
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+                         alt="{{ $post->title }}"
+                         class="w-full h-full object-cover">
+                @endif
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
 
                 <!-- Back to Posts Button - Floating -->
                 <div class="absolute top-6 left-6">
-                    <a href="#" class="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-sm text-gray-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white transition-colors shadow-lg">
+                    <a href="{{ route('home') }}" class="inline-flex items-center space-x-2 bg-white/90 backdrop-blur-sm text-gray-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-white transition-colors shadow-lg">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                         </svg>
@@ -77,29 +83,35 @@
                     <!-- Category Badge -->
                     <div class="mb-6">
                         <span class="inline-block bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-sm font-medium px-3 py-1 rounded-full">
-                            Professional Journey
+                            {{ $post->category->name }}
                         </span>
                     </div>
 
                     <!-- Title -->
                     <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-                        Breaking Barriers in Professional Football: A Journey of Determination
+                        {{ $post->title }}
                     </h1>
 
                     <!-- Description -->
                     <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                        From being the only girl in youth leagues to signing my first professional contract, this journey taught me that persistence beats talent when talent doesn't persist. Here's how I navigated the challenges and triumphs of women's football.
+                        {{ $post->excerpt }}
                     </p>
 
                     <!-- Author and Date Info -->
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between py-6 border-t border-b border-gray-200 dark:border-gray-700">
                         <div class="flex items-center space-x-4 mb-4 sm:mb-0">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                                 alt="Alexandra Lopez"
-                                 class="w-12 h-12 rounded-full object-cover">
+                            @if($post->user->avatar)
+                                <img src="{{ $post->user->avatar }}"
+                                     alt="{{ $post->user->name }}"
+                                     class="w-12 h-12 rounded-full object-cover">
+                            @else
+                                <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-medium text-sm">{{ $post->user->initials() }}</span>
+                                </div>
+                            @endif
                             <div>
-                                <h3 class="font-semibold text-gray-900 dark:text-white">Alexandra Lopez</h3>
-                                <p class="text-sm text-gray-600 dark:text-gray-400">Professional Footballer & Advocate</p>
+                                <h3 class="font-semibold text-gray-900 dark:text-white">{{ $post->user->name }}</h3>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">{{ $post->user->title ?: 'Author' }}</p>
                             </div>
                         </div>
                         <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 space-x-4">
@@ -107,13 +119,13 @@
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                 </svg>
-                                <span>March 15, 2024</span>
+                                <span>{{ $post->published_at ? $post->published_at->format('F d, Y') : $post->created_at->format('F d, Y') }}</span>
                             </div>
                             <div class="flex items-center space-x-1">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
-                                <span>8 min read</span>
+                                <span>{{ $post->read_time }} min read</span>
                             </div>
                         </div>
                     </div>
@@ -121,57 +133,17 @@
 
                 <!-- Article Content -->
                 <article class="prose prose-lg prose-emerald max-w-none dark:prose-invert mb-16">
-                    <!-- First Section -->
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-6">
-                        The Early Days: Fighting for Recognition
-                    </h2>
+                    @if($post->featured_image)
+                        <div class="my-12">
+                            <img src="{{ $post->featured_image }}"
+                                 alt="{{ $post->title }}"
+                                 class="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg">
+                        </div>
+                    @endif
 
-                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                        Growing up in a small town where football was considered "a boys' game," I faced my first challenge before I even stepped onto a pitch. At age 7, I remember standing at the edge of the local football field, watching the boys practice, knowing I could play just as well – if not better – than half of them.
-                    </p>
-
-                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                        My parents were supportive, but the local coaches were skeptical. "Girls don't have the physical strength," they'd say, or "Football is too rough for girls." But I was determined. I practiced every day in our backyard, perfecting my touches, working on my speed, and building the mental resilience that would serve me throughout my career.
-                    </p>
-
-                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-                        When I finally convinced a coach to let me try out for the youth team, I was the only girl among 30 boys. The pressure was immense – I knew I had to be twice as good to get half the recognition. But that pressure became my fuel.
-                    </p>
-
-                    <!-- Middle Image -->
-                    <div class="my-12">
-                        <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                             alt="Young women training on football field"
-                             class="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg">
-                        <p class="text-sm text-gray-600 dark:text-gray-400 text-center mt-4 italic">
-                            Training with dedication: Every practice session was an opportunity to prove myself
-                        </p>
+                    <div class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        {!! $post->content !!}
                     </div>
-
-                    <!-- Second Section -->
-                    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mt-12 mb-6">
-                        The Professional Breakthrough: Making Dreams Reality
-                    </h2>
-
-                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                        Years of dedication finally paid off when I received my first professional contract at age 19. The moment I held that contract in my hands, I thought about that 7-year-old girl watching from the sidelines, dreaming of this exact moment.
-                    </p>
-
-                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                        Professional football brought new challenges: higher stakes, more intense training, and the pressure to perform at the highest level consistently. But it also brought incredible opportunities – to inspire young girls, to be part of a growing movement in women's football, and to push the boundaries of what's possible.
-                    </p>
-
-                    <blockquote class="border-l-4 border-emerald-500 pl-6 my-8 text-lg italic text-gray-800 dark:text-gray-200">
-                        "Success isn't just about reaching your goals – it's about the doors you open for others along the way. Every time a young girl sees a woman succeeding in football, it expands her vision of what's possible."
-                    </blockquote>
-
-                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                        Today, I'm not just playing the sport I love – I'm part of a revolution. Women's football is growing rapidly, with increasing support, better facilities, and more opportunities than ever before. But there's still work to be done, and I'm committed to being part of that progress.
-                    </p>
-
-                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
-                        To every young girl reading this: your dreams are valid, your ambitions are achievable, and your voice matters. The pitch is waiting for you – all you have to do is step onto it.
-                    </p>
                 </article>
 
                 <!-- Social Sharing and Navigation -->
@@ -202,7 +174,7 @@
                         </div>
 
                         <!-- Back to Posts Button -->
-                        <a href="#" class="inline-flex items-center space-x-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+                        <a href="{{ route('home') }}" class="inline-flex items-center space-x-2 bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
                             </svg>
@@ -212,43 +184,39 @@
                 </div>
 
                 <!-- Related Posts Section -->
+                @if($relatedPosts->count() > 0)
                 <div class="border-t border-gray-200 dark:border-gray-700 pt-16 pb-20">
                     <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">You might also like</h3>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Related Post 1 -->
-                        <div class="group cursor-pointer">
-                            <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200"></div>
+                        @foreach($relatedPosts as $relatedPost)
+                        <a href="{{ route('post.show', $relatedPost->slug) }}" class="group cursor-pointer">
+                            <div class="relative h-48 rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200 overflow-hidden">
+                                @if($relatedPost->featured_image)
+                                    <img src="{{ $relatedPost->featured_image }}"
+                                         alt="{{ $relatedPost->title }}"
+                                         class="w-full h-full object-cover">
+                                @else
+                                    <div class="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-500"></div>
+                                @endif
+                                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
+                            </div>
                             <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                                Overcoming Adversity in Women's Football
+                                {{ $relatedPost->title }}
                             </h4>
                             <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
-                                When they said girls couldn't play, I proved them wrong on every pitch...
+                                {{ Str::limit($relatedPost->excerpt, 100) }}
                             </p>
                             <div class="flex items-center text-xs text-gray-500 dark:text-gray-400">
-                                <span>Emma Thompson</span>
+                                <span>{{ $relatedPost->user->name }}</span>
                                 <span class="mx-2">•</span>
-                                <span>5 min read</span>
+                                <span>{{ $relatedPost->read_time }} min read</span>
                             </div>
-                        </div>
-
-                        <!-- Related Post 2 -->
-                        <div class="group cursor-pointer">
-                            <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200"></div>
-                            <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
-                                Coaching the Future Generation
-                            </h4>
-                            <p class="text-gray-600 dark:text-gray-300 text-sm mb-3">
-                                After retiring from professional play, I found my true calling in developing young talent...
-                            </p>
-                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-400">
-                                <span>Maria Rodriguez</span>
-                                <span class="mx-2">•</span>
-                                <span>7 min read</span>
-                            </div>
-                        </div>
+                        </a>
+                        @endforeach
                     </div>
                 </div>
+                @endif
             </div>
         </section>
 

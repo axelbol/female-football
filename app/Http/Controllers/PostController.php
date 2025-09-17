@@ -77,4 +77,17 @@ class PostController extends Controller
         return redirect()->route('posts.index')
             ->with('success', 'Post deleted successfully.');
     }
+
+    public function showPublic(Post $post): View
+    {
+        // Ensure the post is published
+        if (!$post->is_published) {
+            abort(404);
+        }
+
+        $post->load(['user', 'category']);
+        $relatedPosts = $post->getRelatedPosts();
+
+        return view('post', compact('post', 'relatedPosts'));
+    }
 }

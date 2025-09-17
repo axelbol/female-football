@@ -70,4 +70,20 @@ class Post extends Model
     {
         return $query->where('category_id', $categoryId);
     }
+
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    public function getRelatedPosts(int $limit = 2)
+    {
+        return self::published()
+            ->where('id', '!=', $this->id)
+            ->where('category_id', $this->category_id)
+            ->with(['user', 'category'])
+            ->latest('published_at')
+            ->limit($limit)
+            ->get();
+    }
 }
