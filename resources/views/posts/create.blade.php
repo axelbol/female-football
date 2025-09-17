@@ -49,12 +49,8 @@
                         <label for="content" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             {{ __('Content') }} <span class="text-red-500">*</span>
                         </label>
-                        <textarea name="content"
-                                  id="content"
-                                  rows="12"
-                                  class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('content') border-red-500 @enderror"
-                                  placeholder="{{ __('Write your post content here...') }}"
-                                  required>{{ old('content') }}</textarea>
+                        <div id="editor" class="mt-1 bg-white dark:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600 @error('content') border-red-500 @enderror" style="height: 300px;"></div>
+                        <textarea name="content" id="content" style="display: none;">{{ old('content') }}</textarea>
                         @error('content')
                             <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                         @enderror
@@ -188,4 +184,56 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'color': [] }, { 'background': [] }],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        [{ 'indent': '-1'}, { 'indent': '+1' }],
+                        [{ 'align': [] }],
+                        ['blockquote', 'code-block'],
+                        ['link', 'image'],
+                        ['clean']
+                    ]
+                }
+            });
+
+            var contentField = document.getElementById('content');
+
+            // Update hidden textarea on every content change
+            quill.on('text-change', function() {
+                contentField.value = quill.root.innerHTML;
+            });
+
+            // Load existing content if available
+            var existingContent = contentField.value;
+            if (existingContent) {
+                quill.root.innerHTML = existingContent;
+            }
+
+            // Also update on form submit as a fallback
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function(e) {
+                var content = quill.root.innerHTML.trim();
+                contentField.value = content;
+
+                // Check if content is empty (only contains empty tags)
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = content;
+                var textContent = tempDiv.textContent || tempDiv.innerText || '';
+
+                if (textContent.trim() === '') {
+                    e.preventDefault();
+                    alert('Please enter some content for your post.');
+                    return false;
+                }
+            });
+        });
+    </script>
 </x-layouts.app>

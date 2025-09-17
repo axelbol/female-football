@@ -132,7 +132,7 @@
                 </div>
 
                 <!-- Article Content -->
-                <article class="prose prose-lg prose-emerald max-w-none dark:prose-invert mb-16">
+                <article class="prose prose-lg prose-emerald max-w-none dark:prose-invert mb-16 prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-strong:text-gray-900 dark:prose-strong:text-white prose-blockquote:border-emerald-500 prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300 prose-code:text-emerald-600 dark:prose-code:text-emerald-400 prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-th:text-gray-900 dark:prose-th:text-white prose-td:text-gray-700 dark:prose-td:text-gray-300">
                     @if($post->featured_image)
                         <div class="my-12">
                             <img src="{{ $post->featured_image }}"
@@ -141,10 +141,64 @@
                         </div>
                     @endif
 
-                    <div class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                    <div class="leading-relaxed quill-content">
                         {!! $post->content !!}
                     </div>
                 </article>
+
+                <style>
+                    .quill-content ol {
+                        list-style-type: decimal;
+                        margin-left: 1.5rem;
+                        margin-bottom: 1rem;
+                        padding-left: 0.5rem;
+                    }
+
+                    .quill-content ul {
+                        list-style-type: disc;
+                        margin-left: 1.5rem;
+                        margin-bottom: 1rem;
+                        padding-left: 0.5rem;
+                    }
+
+                    .quill-content li {
+                        margin-bottom: 0.5rem;
+                        color: rgb(55 65 81);
+                    }
+
+                    .dark .quill-content li {
+                        color: rgb(209 213 219);
+                    }
+
+                    .quill-content blockquote {
+                        border-left: 4px solid rgb(16 185 129);
+                        padding-left: 1rem;
+                        margin: 1.5rem 0;
+                        font-style: italic;
+                        background-color: rgb(243 244 246);
+                        padding: 1rem;
+                        border-radius: 0.5rem;
+                        color: rgb(55 65 81);
+                    }
+
+                    .dark .quill-content blockquote {
+                        background-color: rgb(31 41 55);
+                        color: rgb(209 213 219);
+                    }
+
+                    .quill-content .ql-indent-1 { margin-left: 3rem; }
+                    .quill-content .ql-indent-2 { margin-left: 4.5rem; }
+                    .quill-content .ql-indent-3 { margin-left: 6rem; }
+                    .quill-content .ql-indent-4 { margin-left: 7.5rem; }
+                    .quill-content .ql-indent-5 { margin-left: 9rem; }
+                    .quill-content .ql-indent-6 { margin-left: 10.5rem; }
+                    .quill-content .ql-indent-7 { margin-left: 12rem; }
+                    .quill-content .ql-indent-8 { margin-left: 13.5rem; }
+
+                    .quill-content .ql-align-center { text-align: center; }
+                    .quill-content .ql-align-right { text-align: right; }
+                    .quill-content .ql-align-justify { text-align: justify; }
+                </style>
 
                 <!-- Social Sharing and Navigation -->
                 <div class="border-t border-gray-200 dark:border-gray-700 pt-8 mb-16">
@@ -190,7 +244,7 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         @foreach($relatedPosts as $relatedPost)
-                        <a href="{{ route('post.show', $relatedPost->slug) }}" class="group cursor-pointer">
+                        <a href="{{ route('post.public', $relatedPost->slug) }}" class="group cursor-pointer">
                             <div class="relative h-48 rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200 overflow-hidden">
                                 @if($relatedPost->featured_image)
                                     <img src="{{ $relatedPost->featured_image }}"
