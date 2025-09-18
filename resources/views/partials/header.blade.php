@@ -3,7 +3,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <a href="{{ route('home') }}" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                <img src="{{ asset('img/logo/3-removebg-preview.png') }}" alt="Capitanas Logo" class="w-28">
+                <img src="{{ asset('img/logo/capitanas.png') }}" alt="Capitanas Logo" class="w-28">
                 {{-- <h1 class="text-xl font-bold text-gray-900 dark:text-white">Capitanas</h1> --}}
             </a>
 
