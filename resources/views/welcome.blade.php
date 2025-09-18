@@ -18,38 +18,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 min-h-screen">
-        <!-- Navigation -->
-        <nav class="bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-200 dark:bg-gray-900/80 dark:border-gray-700">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-16">
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center">
-                            <span class="text-white font-bold text-sm">⚽</span>
-                        </div>
-                        <h1 class="text-xl font-bold text-gray-900 dark:text-white">Her Game</h1>
-                    </div>
 
-                    @if (Route::has('login'))
-                        <div class="flex items-center space-x-4">
-                            @auth
-                                <a href="{{ url('/dashboard') }}" class="text-gray-700 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition-colors">
-                                    Dashboard
-                                </a>
-                            @else
-                                <a href="{{ route('login') }}" class="text-gray-700 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-3 py-2 text-sm font-medium transition-colors">
-                                    Log in
-                                </a>
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-emerald-700 transition-colors">
-                                        Join Us
-                                    </a>
-                                @endif
-                            @endauth
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </nav>
+        <!-- Header -->
+        @include('partials.header')
 
         <!-- Sections -->
         @include('partials.section')
