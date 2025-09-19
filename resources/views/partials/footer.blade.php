@@ -9,7 +9,7 @@
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="bg-white text-emerald-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-50 transition-colors">
+                <a href="{{ route('register') }}" class="bg-white text-emerald-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-200 transition-colors">
                     Get Started
                 </a>
             @endif
