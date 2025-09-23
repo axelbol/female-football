@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('touches', function (Blueprint $table) {
             $table->id();
-            $table->string('ig_account');
+            $table->string('ig_account')->nullable();
             $table->string('alternative_contact')->nullable();
             $table->text('comments')->nullable();
             $table->timestamps();
