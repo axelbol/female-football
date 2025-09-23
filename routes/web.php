@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LearnController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TouchController;
 use App\Http\Controllers\UserController;
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
+
+Route::get('learn', LearnController::class)->name('learn');
 
 Route::get('touch', [TouchController::class, 'create'])->name('touch.create');
 Route::post('touch', [TouchController::class, 'store'])->name('touch.store');

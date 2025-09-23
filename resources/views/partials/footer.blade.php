@@ -8,12 +8,10 @@
             Your story could inspire thousands of young girls to chase their football dreams. Join our community of incredible women making a difference.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            @if (Route::has('register'))
-                <a href="{{ route('register') }}" class="bg-white text-emerald-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-200 transition-colors">
-                    Get Started
-                </a>
-            @endif
-            <a href="#" class="border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-white/10 transition-colors">
+            <a href="{{ route('touch.create') }}" class="bg-white text-emerald-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-200 transition-colors">
+                Get Started
+            </a>
+            <a href="{{ route('learn') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-white/10 transition-colors">
                 Learn More
             </a>
         </div>
