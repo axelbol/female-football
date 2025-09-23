@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $post->title }} - Her Game</title>
+        <title>{{ $post->title }} - Capitanas</title>
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -52,9 +52,9 @@
                 <div class="py-12">
                     <!-- Category Badge -->
                     <div class="mb-6">
-                        <span class="inline-block bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-sm font-medium px-3 py-1 rounded-full">
+                        <a href="{{ route('category.show', $post->category->slug) }}" class="inline-block bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-sm font-medium px-3 py-1 rounded-full hover:bg-emerald-200 dark:hover:bg-emerald-800 transition-colors cursor-pointer">
                             {{ $post->category->name }}
-                        </span>
+                        </a>
                     </div>
 
                     <!-- Title -->

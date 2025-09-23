@@ -32,9 +32,13 @@ class CategoryController extends Controller
 
     public function show(Category $category): View
     {
-        $category->load('posts');
+        $posts = $category->posts()
+            ->with(['user', 'category'])
+            ->where('is_published', true)
+            ->latest('published_at')
+            ->paginate(12);
 
-        return view('categories.show', compact('category'));
+        return view('category', compact('category', 'posts'));
     }
 
     public function edit(Category $category): View

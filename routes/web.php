@@ -48,5 +48,8 @@ Route::middleware(['auth'])->group(function () {
 
 require __DIR__.'/auth.php';
 
+// Category posts route
+Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
+
 // Put the catch-all route at the end to avoid conflicts
 Route::get('/{post}', [PostController::class, 'showPublic'])->name('post.public');
