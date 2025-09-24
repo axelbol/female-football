@@ -6,10 +6,13 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Post extends Model
+class Post extends Model implements HasMedia
 {
-    use HasFactory, Sluggable;
+    use HasFactory, Sluggable, InteractsWithMedia;
 
     protected $fillable = [
         'title',
@@ -17,9 +20,6 @@ class Post extends Model
         'slug',
         'excerpt',
         'content',
-        'featured_image',
-        'hero_image',
-        'middle_image',
         'user_id',
         'category_id',
         'read_time',
@@ -96,5 +96,35 @@ class Post extends Model
             ->latest('published_at')
             ->limit($limit)
             ->get();
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('featured_image')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+
+        $this->addMediaCollection('hero_image')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+
+        $this->addMediaCollection('middle_image')
+            ->singleFile()
+            ->acceptsMimeTypes(['image/jpeg', 'image/png', 'image/webp']);
+    }
+
+    public function getFeaturedImageUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('featured_image');
+    }
+
+    public function getHeroImageUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('hero_image');
+    }
+
+    public function getMiddleImageUrlAttribute(): ?string
+    {
+        return $this->getFirstMediaUrl('middle_image');
     }
 }

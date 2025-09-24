@@ -17,7 +17,7 @@
 
         <div class="max-w-4xl">
             <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
-                <form action="{{ route('posts.update', $post) }}" method="POST" class="p-6 space-y-6">
+                <form action="{{ route('posts.update', $post) }}" method="POST" enctype="multipart/form-data" class="p-6 space-y-6">
                     @csrf
                     @method('PUT')
 
@@ -117,14 +117,20 @@
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div>
                             <label for="featured_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                {{ __('Featured Image URL') }}
+                                {{ __('Featured Image') }}
                             </label>
-                            <input type="url"
+                            @if($post->featured_image_url)
+                                <div class="mb-2">
+                                    <img src="{{ $post->featured_image_url }}" alt="Current featured image" class="w-full h-32 object-cover rounded-lg">
+                                    <p class="text-xs text-gray-500 mt-1">{{ __('Current image') }}</p>
+                                </div>
+                            @endif
+                            <input type="file"
                                    name="featured_image"
                                    id="featured_image"
-                                   value="{{ old('featured_image', $post->featured_image) }}"
-                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('featured_image') border-red-500 @enderror"
-                                   placeholder="https://example.com/image.jpg">
+                                   accept="image/jpeg,image/png,image/webp"
+                                   class="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('featured_image') border-red-500 @enderror">
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __('JPEG, PNG, or WebP. Max 2MB.') }}</p>
                             @error('featured_image')
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
@@ -132,14 +138,20 @@
 
                         <div>
                             <label for="hero_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                {{ __('Hero Image URL') }}
+                                {{ __('Hero Image') }}
                             </label>
-                            <input type="url"
+                            @if($post->hero_image_url)
+                                <div class="mb-2">
+                                    <img src="{{ $post->hero_image_url }}" alt="Current hero image" class="w-full h-32 object-cover rounded-lg">
+                                    <p class="text-xs text-gray-500 mt-1">{{ __('Current image') }}</p>
+                                </div>
+                            @endif
+                            <input type="file"
                                    name="hero_image"
                                    id="hero_image"
-                                   value="{{ old('hero_image', $post->hero_image) }}"
-                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('hero_image') border-red-500 @enderror"
-                                   placeholder="https://example.com/hero.jpg">
+                                   accept="image/jpeg,image/png,image/webp"
+                                   class="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('hero_image') border-red-500 @enderror">
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __('JPEG, PNG, or WebP. Max 2MB.') }}</p>
                             @error('hero_image')
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
@@ -147,14 +159,20 @@
 
                         <div>
                             <label for="middle_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
-                                {{ __('Middle Image URL') }}
+                                {{ __('Middle Image') }}
                             </label>
-                            <input type="url"
+                            @if($post->middle_image_url)
+                                <div class="mb-2">
+                                    <img src="{{ $post->middle_image_url }}" alt="Current middle image" class="w-full h-32 object-cover rounded-lg">
+                                    <p class="text-xs text-gray-500 mt-1">{{ __('Current image') }}</p>
+                                </div>
+                            @endif
+                            <input type="file"
                                    name="middle_image"
                                    id="middle_image"
-                                   value="{{ old('middle_image', $post->middle_image) }}"
-                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('middle_image') border-red-500 @enderror"
-                                   placeholder="https://example.com/middle.jpg">
+                                   accept="image/jpeg,image/png,image/webp"
+                                   class="mt-1 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 @error('middle_image') border-red-500 @enderror">
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">{{ __('JPEG, PNG, or WebP. Max 2MB.') }}</p>
                             @error('middle_image')
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror

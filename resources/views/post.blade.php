@@ -12,20 +12,20 @@
         <meta property="og:url" content="{{ url()->current() }}">
         <meta property="og:type" content="article">
         <meta property="og:site_name" content="Capitanas">
-        @if($post->featured_image)
-        <meta property="og:image" content="{{ $post->featured_image }}">
-        @elseif($post->hero_image)
-        <meta property="og:image" content="{{ $post->hero_image }}">
+        @if($post->featured_image_url)
+        <meta property="og:image" content="{{ $post->featured_image_url }}">
+        @elseif($post->hero_image_url)
+        <meta property="og:image" content="{{ $post->hero_image_url }}">
         @endif
 
         <!-- Twitter Card Meta Tags -->
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="{{ $post->title }}">
         <meta name="twitter:description" content="{{ Str::limit($post->excerpt, 160) }}">
-        @if($post->featured_image)
-        <meta name="twitter:image" content="{{ $post->featured_image }}">
-        @elseif($post->hero_image)
-        <meta name="twitter:image" content="{{ $post->hero_image }}">
+        @if($post->featured_image_url)
+        <meta name="twitter:image" content="{{ $post->featured_image_url }}">
+        @elseif($post->hero_image_url)
+        <meta name="twitter:image" content="{{ $post->hero_image_url }}">
         @endif
 
         <link rel="icon" href="/favicon.ico" sizes="any">
@@ -47,8 +47,8 @@
         <section class="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
             <!-- Hero Image -->
             <div class="relative h-64 md:h-80 lg:h-96 overflow-hidden">
-                @if($post->hero_image)
-                    <img src="{{ $post->hero_image }}"
+                @if($post->hero_image_url)
+                    <img src="{{ $post->hero_image_url }}"
                          alt="{{ $post->title }}"
                          class="w-full h-full object-cover">
                 @else
@@ -125,16 +125,62 @@
 
                 <!-- Article Content -->
                 <article class="prose prose-lg prose-emerald max-w-none dark:prose-invert mb-16 prose-headings:text-gray-900 dark:prose-headings:text-white prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-strong:text-gray-900 dark:prose-strong:text-white prose-blockquote:border-emerald-500 prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300 prose-code:text-emerald-600 dark:prose-code:text-emerald-400 prose-pre:bg-gray-800 prose-pre:text-gray-100 prose-th:text-gray-900 dark:prose-th:text-white prose-td:text-gray-700 dark:prose-td:text-gray-300">
-                    @if($post->featured_image)
+                    @if($post->featured_image_url)
                         <div class="my-12">
-                            <img src="{{ $post->featured_image }}"
+                            <img src="{{ $post->featured_image_url }}"
                                  alt="{{ $post->title }}"
+                                 loading="lazy"
                                  class="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg">
                         </div>
                     @endif
 
                     <div class="leading-relaxed quill-content">
-                        {!! $post->content !!}
+                        @if($post->middle_image_url)
+                            @php
+                                // Split content by paragraphs to find middle
+                                $content = $post->content;
+
+                                // Find all paragraph tags (including <p> and other block elements)
+                                preg_match_all('/<(p|h[1-6]|div|blockquote)[^>]*>.*?<\/\1>/s', $content, $matches, PREG_OFFSET_CAPTURE);
+
+                                if (count($matches[0]) >= 2) {
+                                    $totalParagraphs = count($matches[0]);
+                                    $middleIndex = intval($totalParagraphs / 2);
+
+                                    // Get the position after the middle paragraph
+                                    $middleParagraph = $matches[0][$middleIndex - 1];
+                                    $insertPosition = $middleParagraph[1] + strlen($middleParagraph[0]);
+
+                                    // Split content at middle position
+                                    $beforeMiddle = substr($content, 0, $insertPosition);
+                                    $afterMiddle = substr($content, $insertPosition);
+
+                                    $middleImageHtml = '<div class="my-12 not-prose"><img src="' . $post->middle_image_url . '" alt="' . e($post->title) . '" loading="lazy" class="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg"></div>';
+                                } else {
+                                    // If less than 2 paragraphs, put middle image after first half of content
+                                    $contentLength = strlen($content);
+                                    $middlePosition = intval($contentLength / 2);
+
+                                    // Find nearest closing tag after middle position
+                                    $nearestClosingTag = strpos($content, '>', $middlePosition);
+                                    if ($nearestClosingTag !== false) {
+                                        $insertPosition = $nearestClosingTag + 1;
+                                    } else {
+                                        $insertPosition = $middlePosition;
+                                    }
+
+                                    $beforeMiddle = substr($content, 0, $insertPosition);
+                                    $afterMiddle = substr($content, $insertPosition);
+                                    $middleImageHtml = '<div class="my-12 not-prose"><img src="' . $post->middle_image_url . '" alt="' . e($post->title) . '" loading="lazy" class="w-full h-64 md:h-80 object-cover rounded-xl shadow-lg"></div>';
+                                }
+                            @endphp
+
+                            {!! $beforeMiddle !!}
+                            {!! $middleImageHtml !!}
+                            {!! $afterMiddle !!}
+                        @else
+                            {!! $post->content !!}
+                        @endif
                     </div>
                 </article>
 
@@ -247,9 +293,10 @@
                         @foreach($relatedPosts as $relatedPost)
                         <a href="{{ route('post.public', $relatedPost->slug) }}" class="group cursor-pointer">
                             <div class="relative h-48 rounded-xl mb-4 group-hover:scale-105 transition-transform duration-200 overflow-hidden">
-                                @if($relatedPost->featured_image)
-                                    <img src="{{ $relatedPost->featured_image }}"
+                                @if($relatedPost->featured_image_url)
+                                    <img src="{{ $relatedPost->featured_image_url }}"
                                          alt="{{ $relatedPost->title }}"
+                                         loading="lazy"
                                          class="w-full h-full object-cover">
                                 @else
                                     <div class="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-500"></div>

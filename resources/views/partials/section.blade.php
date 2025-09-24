@@ -55,8 +55,8 @@
                 <!-- Large Story Card -->
                 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                        @if($latestPost->hero_image)
-                            <div class="h-64 lg:h-full bg-cover bg-center" style="background-image: url('{{ Storage::url($latestPost->hero_image) }}')"></div>
+                        @if($latestPost->hero_image_url)
+                            <div class="h-64 lg:h-full bg-cover bg-center" style="background-image: url('{{ $latestPost->hero_image_url }}')"></div>
                         @else
                             <div class="h-64 lg:h-full bg-gradient-to-br from-rose-400 to-orange-500"></div>
                         @endif
@@ -138,8 +138,8 @@
                 @endphp
                 <!-- Latest Story Card {{ $index + 1 }} -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    @if($post->featured_image)
-                        <div class="h-40 bg-cover bg-center" style="background-image: url('{{ Storage::url($post->featured_image) }}')"></div>
+                    @if($post->featured_image_url)
+                        <div class="h-40 bg-cover bg-center" style="background-image: url('{{ $post->featured_image_url }}')"></div>
                     @else
                         <div class="h-40 bg-gradient-to-br from-{{ $color }}-400 to-{{ $color === 'violet' ? 'purple' : $color }}-500"></div>
                     @endif
@@ -225,8 +225,8 @@
                 @endphp
                 <!-- Featured Story Card {{ $index + 1 }} -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                    @if($post->featured_image)
-                        <div class="h-48 bg-cover bg-center" style="background-image: url('{{ Storage::url($post->featured_image) }}')"></div>
+                    @if($post->featured_image_url)
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('{{ $post->featured_image_url }}')"></div>
                     @else
                         <div class="h-48 bg-gradient-to-br from-{{ $color }}-400 to-{{ $toColor }}-500"></div>
                     @endif

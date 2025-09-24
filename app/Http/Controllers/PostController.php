@@ -39,6 +39,22 @@ class PostController extends Controller
 
         $post = Post::create($validatedData);
 
+        // Handle image uploads
+        if ($request->hasFile('featured_image')) {
+            $post->addMediaFromRequest('featured_image')
+                ->toMediaCollection('featured_image');
+        }
+
+        if ($request->hasFile('hero_image')) {
+            $post->addMediaFromRequest('hero_image')
+                ->toMediaCollection('hero_image');
+        }
+
+        if ($request->hasFile('middle_image')) {
+            $post->addMediaFromRequest('middle_image')
+                ->toMediaCollection('middle_image');
+        }
+
         return redirect()->route('posts.show', $post)
             ->with('success', 'Post created successfully.');
     }
@@ -66,6 +82,25 @@ class PostController extends Controller
         }
 
         $post->update($validatedData);
+
+        // Handle image uploads
+        if ($request->hasFile('featured_image')) {
+            $post->clearMediaCollection('featured_image');
+            $post->addMediaFromRequest('featured_image')
+                ->toMediaCollection('featured_image');
+        }
+
+        if ($request->hasFile('hero_image')) {
+            $post->clearMediaCollection('hero_image');
+            $post->addMediaFromRequest('hero_image')
+                ->toMediaCollection('hero_image');
+        }
+
+        if ($request->hasFile('middle_image')) {
+            $post->clearMediaCollection('middle_image');
+            $post->addMediaFromRequest('middle_image')
+                ->toMediaCollection('middle_image');
+        }
 
         return redirect()->route('posts.show', $post)
             ->with('success', 'Post updated successfully.');
