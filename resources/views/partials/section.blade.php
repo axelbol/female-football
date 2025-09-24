@@ -51,43 +51,69 @@
         </div>
 
         <div class="max-w-4xl mx-auto">
-            <!-- Large Story Card -->
-            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                    <div class="h-64 lg:h-full bg-gradient-to-br from-rose-400 to-orange-500"></div>
-                    <div class="p-8 lg:p-12 flex flex-col justify-center">
-                        <div class="mb-4">
-                            <span class="inline-block bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-sm font-medium px-3 py-1 rounded-full">
-                                New Story
-                            </span>
-                        </div>
-                        <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                            Breaking Barriers in Professional Football
-                        </h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-                            "From being the only girl in youth leagues to signing my first professional contract, this journey taught me that persistence beats talent when talent doesn't persist..."
-                        </p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold text-sm">AL</span>
-                                </div>
-                                <div>
-                                    <span class="text-emerald-600 dark:text-emerald-400 font-semibold block">
-                                        Alexandra Lopez
+            @if($latestPost)
+                <!-- Large Story Card -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                        @if($latestPost->hero_image)
+                            <div class="h-64 lg:h-full bg-cover bg-center" style="background-image: url('{{ Storage::url($latestPost->hero_image) }}')"></div>
+                        @else
+                            <div class="h-64 lg:h-full bg-gradient-to-br from-rose-400 to-orange-500"></div>
+                        @endif
+                        <div class="p-8 lg:p-12 flex flex-col justify-center">
+                            <div class="mb-4">
+                                <span class="inline-block bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-sm font-medium px-3 py-1 rounded-full">
+                                    New Story
+                                </span>
+                                @if($latestPost->category)
+                                    <span class="inline-block ml-2 bg-{{ $latestPost->category->color ?? 'gray' }}-100 dark:bg-{{ $latestPost->category->color ?? 'gray' }}-900 text-{{ $latestPost->category->color ?? 'gray' }}-800 dark:text-{{ $latestPost->category->color ?? 'gray' }}-200 text-sm font-medium px-3 py-1 rounded-full">
+                                        {{ $latestPost->category->name }}
                                     </span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400">
-                                        2 hours ago
-                                    </span>
-                                </div>
+                                @endif
                             </div>
-                            <a href="#" class="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
-                                Read Story
-                            </a>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                                {{ $latestPost->title }}
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                                {{ Str::limit($latestPost->excerpt, 150) }}
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-bold text-sm">{{ strtoupper(substr($latestPost->player_name ?? $latestPost->user->name, 0, 2)) }}</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-emerald-600 dark:text-emerald-400 font-semibold block">
+                                            {{ $latestPost->player_name ?? $latestPost->user->name }}
+                                        </span>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400">
+                                            {{ $latestPost->published_at->diffForHumans() }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <a href="{{ route('post.public', $latestPost->slug) }}" class="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+                                    Read Story
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <!-- Fallback when no posts exist -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                    <div class="p-8 lg:p-12 text-center">
+                        <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            No Stories Yet
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                            Be the first to share your inspiring journey in women's football.
+                        </p>
+                        <a href="{{ route('posts.create') }}" class="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
+                            Share Your Story
+                        </a>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </section>
@@ -105,77 +131,67 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <!-- Latest Story Card 1 -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-40 bg-gradient-to-br from-violet-400 to-purple-500"></div>
-                <div class="p-6">
-                    <div class="mb-3">
-                        <span class="inline-block bg-violet-100 dark:bg-violet-900 text-violet-800 dark:text-violet-200 text-xs font-medium px-2 py-1 rounded-full">
-                            Recent
-                        </span>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        Youth Academy Success
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                        "Building the next generation of female footballers through dedicated coaching and mentorship programs..."
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-8 bg-violet-600 rounded-full flex items-center justify-center">
-                                <span class="text-white font-bold text-xs">JK</span>
-                            </div>
-                            <div>
-                                <span class="text-violet-600 dark:text-violet-400 font-medium text-sm block">
-                                    Jessica Kim
+            @forelse($recentPosts as $index => $post)
+                @php
+                    $colors = ['violet', 'amber', 'blue', 'rose', 'emerald', 'purple'];
+                    $color = $colors[$index % count($colors)];
+                @endphp
+                <!-- Latest Story Card {{ $index + 1 }} -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    @if($post->featured_image)
+                        <div class="h-40 bg-cover bg-center" style="background-image: url('{{ Storage::url($post->featured_image) }}')"></div>
+                    @else
+                        <div class="h-40 bg-gradient-to-br from-{{ $color }}-400 to-{{ $color === 'violet' ? 'purple' : $color }}-500"></div>
+                    @endif
+                    <div class="p-6">
+                        <div class="mb-3">
+                            <span class="inline-block bg-{{ $color }}-100 dark:bg-{{ $color }}-900 text-{{ $color }}-800 dark:text-{{ $color }}-200 text-xs font-medium px-2 py-1 rounded-full">
+                                Recent
+                            </span>
+                            @if($post->category)
+                                <span class="inline-block ml-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium px-2 py-1 rounded-full">
+                                    {{ $post->category->name }}
                                 </span>
-                                <span class="text-xs text-gray-500 dark:text-gray-400">
-                                    1 day ago
-                                </span>
-                            </div>
+                            @endif
                         </div>
-                        <a href="#" class="text-violet-600 dark:text-violet-400 hover:text-violet-700 dark:hover:text-violet-300 text-sm font-medium">
-                            Read More →
-                        </a>
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                            {{ $post->title }}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                            {{ Str::limit($post->excerpt, 100) }}
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-8 h-8 bg-{{ $color }}-600 rounded-full flex items-center justify-center">
+                                    <span class="text-white font-bold text-xs">{{ strtoupper(substr($post->player_name ?? $post->user->name, 0, 2)) }}</span>
+                                </div>
+                                <div>
+                                    <span class="text-{{ $color }}-600 dark:text-{{ $color }}-400 font-medium text-sm block">
+                                        {{ $post->player_name ?? $post->user->name }}
+                                    </span>
+                                    <span class="text-xs text-gray-500 dark:text-gray-400">
+                                        {{ $post->published_at->diffForHumans() }}
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="{{ route('post.public', $post->slug) }}" class="text-{{ $color }}-600 dark:text-{{ $color }}-400 hover:text-{{ $color }}-700 dark:hover:text-{{ $color }}-300 text-sm font-medium">
+                                Read More →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Latest Story Card 2 -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-40 bg-gradient-to-br from-amber-400 to-orange-500"></div>
-                <div class="p-6">
-                    <div class="mb-3">
-                        <span class="inline-block bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs font-medium px-2 py-1 rounded-full">
-                            Recent
-                        </span>
+            @empty
+                <!-- Fallback when no recent posts exist -->
+                <div class="col-span-full text-center py-12">
+                    <div class="text-gray-500 dark:text-gray-400 mb-4">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"></path>
+                        </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        International Debut Dream
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
-                        "The moment I put on my national team jersey for the first time, all those years of hard work finally made sense..."
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <div class="w-8 h-8 bg-amber-600 rounded-full flex items-center justify-center">
-                                <span class="text-white font-bold text-xs">RC</span>
-                            </div>
-                            <div>
-                                <span class="text-amber-600 dark:text-amber-400 font-medium text-sm block">
-                                    Rosa Chen
-                                </span>
-                                <span class="text-xs text-gray-500 dark:text-gray-400">
-                                    3 days ago
-                                </span>
-                            </div>
-                        </div>
-                        <a href="#" class="text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 text-sm font-medium">
-                            Read More →
-                        </a>
-                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Recent Stories</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Be among the first to share your football journey.</p>
                 </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
@@ -193,68 +209,66 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Story Card 1 -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-emerald-400 to-teal-500"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        From Grassroots to Glory
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        "Starting at age 5 in my local club, I never imagined I'd represent my country..."
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
-                            Sarah Martinez
-                        </span>
-                        <a href="#" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300">
-                            Read More →
-                        </a>
+            @forelse($featuredPosts as $index => $post)
+                @php
+                    $featuredColors = ['emerald', 'purple', 'blue', 'rose', 'indigo', 'teal'];
+                    $color = $featuredColors[$index % count($featuredColors)];
+                    $toColor = match($color) {
+                        'emerald' => 'teal',
+                        'purple' => 'pink',
+                        'blue' => 'indigo',
+                        'rose' => 'pink',
+                        'indigo' => 'purple',
+                        'teal' => 'cyan',
+                        default => 'slate'
+                    };
+                @endphp
+                <!-- Featured Story Card {{ $index + 1 }} -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    @if($post->featured_image)
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('{{ Storage::url($post->featured_image) }}')"></div>
+                    @else
+                        <div class="h-48 bg-gradient-to-br from-{{ $color }}-400 to-{{ $toColor }}-500"></div>
+                    @endif
+                    <div class="p-6">
+                        @if($post->category)
+                            <div class="mb-3">
+                                <span class="inline-block bg-{{ $color }}-100 dark:bg-{{ $color }}-900 text-{{ $color }}-800 dark:text-{{ $color }}-200 text-xs font-medium px-2 py-1 rounded-full">
+                                    {{ $post->category->name }}
+                                </span>
+                                <span class="inline-block ml-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs font-medium px-2 py-1 rounded-full">
+                                    Featured
+                                </span>
+                            </div>
+                        @endif
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                            {{ $post->title }}
+                        </h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            {{ Str::limit($post->excerpt, 80) }}
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
+                                {{ $post->player_name ?? $post->user->name }}
+                            </span>
+                            <a href="{{ route('post.public', $post->slug) }}" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300">
+                                Read More →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Story Card 2 -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-purple-400 to-pink-500"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        Overcoming Adversity
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        "When they said girls couldn't play, I proved them wrong on every pitch..."
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
-                            Emma Thompson
-                        </span>
-                        <a href="#" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300">
-                            Read More →
-                        </a>
+            @empty
+                <!-- Fallback when no featured posts exist -->
+                <div class="col-span-full text-center py-12">
+                    <div class="text-gray-500 dark:text-gray-400 mb-4">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+                        </svg>
                     </div>
+                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">No Featured Stories</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Featured stories will appear here once marked by our editors.</p>
                 </div>
-            </div>
-
-            <!-- Story Card 3 -->
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="h-48 bg-gradient-to-br from-blue-400 to-indigo-500"></div>
-                <div class="p-6">
-                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                        Coaching the Future
-                    </h3>
-                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                        "After retiring from professional play, I found my true calling in developing young talent..."
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <span class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
-                            Maria Rodriguez
-                        </span>
-                        <a href="#" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300">
-                            Read More →
-                        </a>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
 </section>
