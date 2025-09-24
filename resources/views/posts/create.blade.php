@@ -108,7 +108,7 @@
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         <div>
                             <label for="featured_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                                 {{ __('Featured Image URL') }}
@@ -135,6 +135,21 @@
                                    class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('hero_image') border-red-500 @enderror"
                                    placeholder="https://example.com/hero.jpg">
                             @error('hero_image')
+                                <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                            @enderror
+                        </div>
+
+                        <div>
+                            <label for="middle_image" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                                {{ __('Middle Image URL') }}
+                            </label>
+                            <input type="url"
+                                   name="middle_image"
+                                   id="middle_image"
+                                   value="{{ old('middle_image') }}"
+                                   class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('middle_image') border-red-500 @enderror"
+                                   placeholder="https://example.com/middle.jpg">
+                            @error('middle_image')
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
                             @enderror
                         </div>

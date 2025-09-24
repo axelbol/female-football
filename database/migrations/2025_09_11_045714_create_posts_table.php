@@ -19,6 +19,7 @@ return new class extends Migration
             $table->longText('content');
             $table->string('featured_image')->nullable();
             $table->string('hero_image')->nullable();
+            $table->string('middle_image')->nullable();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->integer('read_time')->default(5);

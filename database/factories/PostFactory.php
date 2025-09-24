@@ -28,6 +28,7 @@ class PostFactory extends Factory
             'content' => fake()->paragraphs(8, true),
             'featured_image' => fake()->boolean(40) ? fake()->imageUrl(800, 600, 'football') : null,
             'hero_image' => fake()->boolean(30) ? fake()->imageUrl(1200, 400, 'sports') : null,
+            'middle_image' => fake()->boolean(25) ? fake()->imageUrl(1000, 500, 'football') : null,
             'user_id' => User::factory(),
             'category_id' => Category::factory(),
             'read_time' => fake()->numberBetween(2, 15),

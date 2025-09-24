@@ -19,6 +19,7 @@ class Post extends Model
         'content',
         'featured_image',
         'hero_image',
+        'middle_image',
         'user_id',
         'category_id',
         'read_time',

@@ -20,6 +20,7 @@ class StorePostRequest extends FormRequest
             'content' => 'required|string',
             'featured_image' => 'nullable|string|max:255',
             'hero_image' => 'nullable|string|max:255',
+            'middle_image' => 'nullable|string|max:255',
             'category_id' => 'required|exists:categories,id',
             'read_time' => 'nullable|integer|min:1',
             'is_featured' => 'boolean',
