@@ -37,6 +37,21 @@
                     </div>
 
                     <div>
+                        <label for="player_name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+                            {{ __('Player Name') }}
+                        </label>
+                        <input type="text"
+                               name="player_name"
+                               id="player_name"
+                               value="{{ old('player_name', $post->player_name) }}"
+                               class="mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:focus:border-blue-500 dark:focus:ring-blue-500 @error('player_name') border-red-500 @enderror"
+                               placeholder="{{ __('Name of the featured player (optional)') }}">
+                        @error('player_name')
+                            <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
                         <label for="excerpt" class="block text-sm font-medium text-gray-700 dark:text-gray-300">
                             {{ __('Excerpt') }} <span class="text-red-500">*</span>
                         </label>

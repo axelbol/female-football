@@ -15,6 +15,7 @@ class UpdatePostRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
+            'player_name' => 'nullable|string|max:255',
             'excerpt' => 'required|string',
             'content' => 'required|string',
             'featured_image' => 'nullable|string|max:255',

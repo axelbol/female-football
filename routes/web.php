@@ -48,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
 
 require __DIR__.'/auth.php';
 
+// Search route
+Route::get('/search', [PostController::class, 'search'])->name('posts.search');
+
 // Category posts route
 Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 

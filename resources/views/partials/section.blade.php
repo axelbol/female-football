@@ -10,16 +10,7 @@
                 <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
                     Share your journey in football. Inspire the next generation of female athletes with your experiences, challenges, and triumphs on and off the pitch.
                 </p>
-                <div class="max-w-md mx-auto lg:mx-0">
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                            </svg>
-                        </div>
-                        <input type="text" class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-800 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 text-lg" placeholder="Find something?">
-                    </div>
-                </div>
+                @livewire('post-search')
             </div>
             <div class="relative">
                 <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl">

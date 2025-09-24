@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $fillable = [
         'title',
+        'player_name',
         'slug',
         'excerpt',
         'content',
@@ -69,6 +70,15 @@ class Post extends Model
     public function scopeByCategory($query, $categoryId)
     {
         return $query->where('category_id', $categoryId);
+    }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where(function ($query) use ($search) {
+            $query->where('title', 'like', '%' . $search . '%')
+                  ->orWhere('player_name', 'like', '%' . $search . '%')
+                  ->orWhere('excerpt', 'like', '%' . $search . '%');
+        });
     }
 
     public function getRouteKeyName(): string

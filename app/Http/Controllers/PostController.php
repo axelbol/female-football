@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PostController extends Controller
@@ -76,6 +77,23 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')
             ->with('success', 'Post deleted successfully.');
+    }
+
+    public function search(Request $request): View
+    {
+        $query = $request->get('q');
+
+        if (empty($query)) {
+            return redirect()->route('home');
+        }
+
+        $posts = Post::published()
+            ->with(['user', 'category'])
+            ->search($query)
+            ->latest('published_at')
+            ->paginate(12);
+
+        return view('search', compact('posts', 'query'));
     }
 
     public function showPublic(Post $post): View
