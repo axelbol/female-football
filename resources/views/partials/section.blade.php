@@ -13,18 +13,18 @@
                 @livewire('post-search')
             </div>
             <div class="relative">
-                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl" id="stats-section">
                     <div class="grid grid-cols-2 gap-6">
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">150+</div>
+                            <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2" data-count="50" data-suffix="+">0+</div>
                             <div class="text-sm text-gray-600 dark:text-gray-300">Stories Shared</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">25+</div>
+                            <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2" data-count="10" data-suffix="+">0+</div>
                             <div class="text-sm text-gray-600 dark:text-gray-300">Countries</div>
                         </div>
                         <div class="text-center">
-                            <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">500+</div>
+                            <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2" data-count="80">0</div>
                             <div class="text-sm text-gray-600 dark:text-gray-300">Athletes</div>
                         </div>
                         <div class="text-center">
@@ -258,3 +258,43 @@
         </div>
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const statsSection = document.getElementById('stats-section');
+    const counters = statsSection.querySelectorAll('[data-count]');
+    let hasAnimated = false;
+
+    function animateCounter(element) {
+        const target = parseInt(element.dataset.count);
+        const suffix = element.dataset.suffix || '';
+        const duration = 2000; // 2 seconds
+        const increment = target / (duration / 16); // 60fps
+        let current = 0;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current) + suffix;
+        }, 16);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasAnimated) {
+                hasAnimated = true;
+                counters.forEach(counter => {
+                    animateCounter(counter);
+                });
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    observer.observe(statsSection);
+});
+</script>
