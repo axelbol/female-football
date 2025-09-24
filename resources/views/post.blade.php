@@ -4,7 +4,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $post->title }} - Capitanas</title>
+        <title>{{ $post->title }} - Capitanas | Women's Football Stories</title>
+        <meta name="description" content="{{ Str::limit(strip_tags($post->excerpt), 160) }}">
+        <meta name="keywords" content="women football, {{ $post->player_name ?? $post->user->name }}, female athletes, {{ $post->category->name ?? 'football stories' }}, women soccer">
+        <meta name="author" content="{{ $post->user->name }}">
+        <meta name="robots" content="index, follow, max-image-preview:large">
+        <meta name="article:author" content="{{ $post->user->name }}">
+        <meta name="article:published_time" content="{{ $post->published_at?->toISOString() }}">
+        <meta name="article:modified_time" content="{{ $post->updated_at->toISOString() }}">
+        @if($post->category)
+        <meta name="article:section" content="{{ $post->category->name }}">
+        @endif
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ url()->current() }}">
 
         <!-- Open Graph Meta Tags for Social Sharing -->
         <meta property="og:title" content="{{ $post->title }}">
@@ -38,10 +51,68 @@
 
         <!-- Vite -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- JSON-LD Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "{{ $post->title }}",
+            "description": "{{ Str::limit(strip_tags($post->excerpt), 160) }}",
+            "image": @if($post->featured_image_url || $post->hero_image_url)
+                {
+                    "@type": "ImageObject",
+                    "url": "{{ $post->featured_image_url ?: $post->hero_image_url }}",
+                    "width": "1200",
+                    "height": "630"
+                }
+            @else
+                null
+            @endif,
+            "author": {
+                "@type": "Person",
+                "name": "{{ $post->user->name }}",
+                "url": "{{ url('/') }}"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "Capitanas",
+                "url": "{{ url('/') }}",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "{{ url('/favicon.svg') }}",
+                    "width": "60",
+                    "height": "60"
+                }
+            },
+            "datePublished": "{{ $post->published_at?->toISOString() ?: $post->created_at->toISOString() }}",
+            "dateModified": "{{ $post->updated_at->toISOString() }}",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{ url()->current() }}"
+            },
+            "articleSection": "{{ $post->category->name ?? 'Football Stories' }}",
+            "keywords": ["women football", "female athletes", "{{ $post->category->name ?? 'football stories' }}", "women soccer"],
+            "wordCount": "{{ str_word_count(strip_tags($post->content)) }}",
+            "timeRequired": "PT{{ $post->read_time }}M",
+            "inLanguage": "en-US"
+        }
+        </script>
     </head>
     <body class="bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-gray-100 min-h-screen">
         <!-- Header -->
         @include('partials.header')
+
+        <!-- Breadcrumb -->
+        <div class="bg-white/50 dark:bg-gray-900/50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <x-breadcrumb :items="[
+                    ['title' => 'Home', 'url' => route('home')],
+                    ['title' => $post->category->name ?? 'Stories', 'url' => $post->category ? route('category.show', $post->category->slug) : null],
+                    ['title' => Str::limit($post->title, 50)]
+                ]" />
+            </div>
+        </div>
 
         <!-- Blog Post Section -->
         <section class="bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
@@ -50,10 +121,12 @@
                 @if($post->hero_image_url)
                     <img src="{{ $post->hero_image_url }}"
                          alt="{{ $post->title }}"
+                         loading="eager"
                          class="w-full h-full object-cover">
                 @else
                     <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
                          alt="{{ $post->title }}"
+                         loading="eager"
                          class="w-full h-full object-cover">
                 @endif
                 <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
@@ -95,6 +168,7 @@
                             @if($post->user->avatar)
                                 <img src="{{ $post->user->avatar }}"
                                      alt="{{ $post->user->name }}"
+                                     loading="lazy"
                                      class="w-12 h-12 rounded-full object-cover">
                             @else
                                 <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center">

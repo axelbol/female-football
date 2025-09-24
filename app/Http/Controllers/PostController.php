@@ -14,7 +14,7 @@ class PostController extends Controller
 {
     public function index(): View
     {
-        $posts = Post::with(['user', 'category'])
+        $posts = Post::with(['user', 'category', 'media'])
             ->latest('created_at')
             ->paginate(15);
 
@@ -61,7 +61,7 @@ class PostController extends Controller
 
     public function show(Post $post): View
     {
-        $post->load(['user', 'category']);
+        $post->load(['user', 'category', 'media']);
 
         return view('posts.show', compact('post'));
     }
@@ -123,7 +123,7 @@ class PostController extends Controller
         }
 
         $posts = Post::published()
-            ->with(['user', 'category'])
+            ->with(['user', 'category', 'media'])
             ->search($query)
             ->latest('published_at')
             ->paginate(12);
@@ -138,7 +138,7 @@ class PostController extends Controller
             abort(404);
         }
 
-        $post->load(['user', 'category']);
+        $post->load(['user', 'category', 'media']);
         $relatedPosts = $post->getRelatedPosts();
 
         return view('post', compact('post', 'relatedPosts'));

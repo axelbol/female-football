@@ -4,7 +4,37 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Capitanas - Stories of Women in Football</title>
+        <title>Capitanas - Inspiring Stories of Women in Football | Female Football Heroes</title>
+        <meta name="description" content="Discover inspiring stories from women who've made their mark in football. Share your journey, read about female football heroes, and join our community of passionate players.">
+        <meta name="keywords" content="women football, female football players, women soccer, football stories, female athletes, women sports, football inspiration, soccer heroes">
+        <meta name="author" content="Capitanas">
+        <meta name="robots" content="index, follow, max-image-preview:large">
+
+        <!-- Canonical URL -->
+        <link rel="canonical" href="{{ url('/') }}">
+
+        <!-- Enhanced Open Graph -->
+        <meta property="og:title" content="Capitanas - Inspiring Stories of Women in Football">
+        <meta property="og:description" content="Discover inspiring stories from women who've made their mark in football. Join our community of passionate female players.">
+        <meta property="og:url" content="{{ url('/') }}">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Capitanas">
+        <meta property="og:locale" content="en_US">
+        @if($latestPost && $latestPost->featured_image_url)
+        <meta property="og:image" content="{{ $latestPost->featured_image_url }}">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:image:alt" content="{{ $latestPost->title }}">
+        @endif
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Capitanas - Inspiring Stories of Women in Football">
+        <meta name="twitter:description" content="Discover inspiring stories from women who've made their mark in football.">
+        @if($latestPost && $latestPost->featured_image_url)
+        <meta name="twitter:image" content="{{ $latestPost->featured_image_url }}">
+        <meta name="twitter:image:alt" content="{{ $latestPost->title }}">
+        @endif
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">

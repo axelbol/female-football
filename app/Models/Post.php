@@ -92,7 +92,7 @@ class Post extends Model implements HasMedia
         return self::published()
             ->where('id', '!=', $this->id)
             ->where('category_id', $this->category_id)
-            ->with(['user', 'category'])
+            ->with(['user', 'category', 'media'])
             ->latest('published_at')
             ->limit($limit)
             ->get();

@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LearnController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TouchController;
 use App\Http\Controllers\UserController;
 use App\Livewire\Settings\Appearance;
@@ -49,6 +50,10 @@ require __DIR__.'/auth.php';
 
 // Search route
 Route::get('/search', [PostController::class, 'search'])->name('posts.search');
+
+// SEO routes
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
+Route::get('/robots.txt', [SitemapController::class, 'robots'])->name('robots');
 
 // Category posts route
 Route::get('/categories/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
