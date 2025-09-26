@@ -15,6 +15,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'admin' => \App\Http\Middleware\AdminMiddleware::class,
             'editor' => \App\Http\Middleware\EditorMiddleware::class,
         ]);
+
+        $middleware->append(\App\Http\Middleware\TrackAnalytics::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

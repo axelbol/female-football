@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TouchController;
 use App\Http\Controllers\UserController;
+use App\Livewire\Analytics\Dashboard as AnalyticsDashboard;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -36,6 +37,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 Route::middleware(['auth', 'editor'])->group(function () {
     Route::resource('categories', CategoryController::class);
     Route::resource('posts', PostController::class);
+    Route::get('analytics', AnalyticsDashboard::class)->name('analytics.dashboard');
 });
 
 Route::middleware(['auth'])->group(function () {
