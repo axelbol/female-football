@@ -121,7 +121,7 @@
                             </label>
                             @if($post->featured_image_url)
                                 <div class="mb-2">
-                                    <img src="{{ $post->featured_image_url }}" alt="Current featured image" class="w-full h-32 object-cover rounded-lg">
+                                    <img src="{{ $post->featured_image_url }}" alt="Current featured image" loading="lazy" class="w-full h-32 object-cover rounded-lg">
                                     <p class="text-xs text-gray-500 mt-1">{{ __('Current image') }}</p>
                                 </div>
                             @endif
@@ -142,7 +142,7 @@
                             </label>
                             @if($post->hero_image_url)
                                 <div class="mb-2">
-                                    <img src="{{ $post->hero_image_url }}" alt="Current hero image" class="w-full h-32 object-cover rounded-lg">
+                                    <img src="{{ $post->hero_image_url }}" alt="Current hero image" loading="lazy" class="w-full h-32 object-cover rounded-lg">
                                     <p class="text-xs text-gray-500 mt-1">{{ __('Current image') }}</p>
                                 </div>
                             @endif
@@ -163,7 +163,7 @@
                             </label>
                             @if($post->middle_image_url)
                                 <div class="mb-2">
-                                    <img src="{{ $post->middle_image_url }}" alt="Current middle image" class="w-full h-32 object-cover rounded-lg">
+                                    <img src="{{ $post->middle_image_url }}" alt="Current middle image" loading="lazy" class="w-full h-32 object-cover rounded-lg">
                                     <p class="text-xs text-gray-500 mt-1">{{ __('Current image') }}</p>
                                 </div>
                             @endif

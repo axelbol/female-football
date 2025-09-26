@@ -24,7 +24,7 @@
         <div class="text-center">
             <div class="flex items-center justify-center space-x-2 mb-4">
                 <a href="{{ route('home') }}" class="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                    <img src="{{ asset('img/logo/footer-logo.png') }}" alt="Capitanas Logo" class="w-36">
+                    <img src="{{ asset('img/logo/footer-logo.png') }}" alt="Capitanas Logo" loading="lazy" class="w-36">
                 </a>
             </div>
             <p class="text-gray-400 mb-4">

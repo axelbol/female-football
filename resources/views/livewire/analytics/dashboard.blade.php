@@ -122,6 +122,7 @@
                                 @if($postData->post->featured_image_url)
                                     <img src="{{ $postData->post->featured_image_url }}"
                                          alt="{{ $postData->post->title }}"
+                                         loading="lazy"
                                          class="w-full h-full object-cover">
                                 @else
                                     <div class="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-500"></div>

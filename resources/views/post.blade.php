@@ -12,7 +12,7 @@
 
         @if($post->featured_image_url)
         <div class="mb-8">
-            <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" class="w-full h-64 object-cover rounded-lg">
+            <img src="{{ $post->featured_image_url }}" alt="{{ $post->title }}" loading="lazy" class="w-full h-64 object-cover rounded-lg">
         </div>
         @endif
 

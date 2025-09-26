@@ -54,7 +54,7 @@
                                     <div class="flex items-center">
                                         @if($post->featured_image)
                                             <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg overflow-hidden">
-                                                <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="h-10 w-10 object-cover">
+                                                <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" loading="lazy" class="h-10 w-10 object-cover">
                                             </div>
                                         @else
                                             <div class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-gray-200 dark:bg-gray-600 text-sm font-medium text-gray-600 dark:text-gray-300">

@@ -45,7 +45,7 @@
                 <div class="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800">
                     @if($post->hero_image)
                         <div class="aspect-video w-full">
-                            <img src="{{ $post->hero_image }}" alt="{{ $post->title }}" class="h-full w-full object-cover">
+                            <img src="{{ $post->hero_image }}" alt="{{ $post->title }}" loading="lazy" class="h-full w-full object-cover">
                         </div>
                     @endif
 
@@ -114,7 +114,7 @@
                     <div class="p-6">
                         <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-4">{{ __('Featured Image') }}</h3>
                         <div class="aspect-video w-full">
-                            <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="h-full w-full object-cover rounded-lg">
+                            <img src="{{ $post->featured_image }}" alt="{{ $post->title }}" loading="lazy" class="h-full w-full object-cover rounded-lg">
                         </div>
                     </div>
                 </div>
