@@ -61,6 +61,163 @@ select:focus[data-flux-control] {
     @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
 }
 
-/* \[:where(&)\]:size-4 {
-    @apply size-4;
-} */
+/* Mobile Touch Optimizations */
+@layer utilities {
+    /* Touch-friendly button base */
+    .btn-touch {
+        @apply min-h-[44px] min-w-[44px] inline-flex items-center justify-center;
+    }
+
+    /* Touch feedback animations */
+    .touch-feedback {
+        @apply transition-all duration-150 ease-in-out;
+        @apply active:scale-95;
+    }
+
+    .touch-feedback:active {
+        transform: scale(0.95);
+    }
+
+    /* Ripple effect */
+    .ripple {
+        @apply relative overflow-hidden;
+    }
+
+    .ripple::before {
+        content: '';
+        @apply absolute inset-0 bg-white opacity-0 rounded-full;
+        transform: scale(0);
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    .ripple:active::before {
+        transform: scale(2);
+        @apply opacity-20;
+    }
+
+    /* Pull to refresh indicator */
+    .pull-refresh {
+        @apply transition-transform duration-300 ease-out;
+    }
+
+    .pull-refresh.pulling {
+        transform: translateY(60px);
+    }
+
+    /* Enhanced touch states */
+    .touch-highlight {
+        @apply transition-colors duration-150;
+        -webkit-tap-highlight-color: rgba(16, 185, 129, 0.1);
+    }
+
+    .touch-highlight:active {
+        @apply bg-emerald-50 dark:bg-emerald-900/20;
+    }
+
+    /* Large touch targets for mobile */
+    @media (max-width: 768px) {
+        .mobile-touch {
+            @apply min-h-[48px] px-6 py-3;
+        }
+
+        .mobile-touch-sm {
+            @apply min-h-[44px] px-4 py-2;
+        }
+
+        .mobile-icon-btn {
+            @apply min-h-[44px] min-w-[44px] p-3;
+        }
+    }
+
+    /* Mobile-first Typography */
+    .mobile-heading-1 {
+        @apply text-2xl leading-tight font-bold;
+        @apply sm:text-3xl sm:leading-tight;
+        @apply md:text-4xl md:leading-tight;
+        @apply lg:text-5xl lg:leading-tight;
+        @apply xl:text-6xl xl:leading-tight;
+    }
+
+    .mobile-heading-2 {
+        @apply text-xl leading-snug font-bold;
+        @apply sm:text-2xl sm:leading-snug;
+        @apply md:text-3xl md:leading-snug;
+        @apply lg:text-4xl lg:leading-snug;
+    }
+
+    .mobile-heading-3 {
+        @apply text-lg leading-snug font-semibold;
+        @apply sm:text-xl sm:leading-snug;
+        @apply md:text-2xl md:leading-snug;
+        @apply lg:text-3xl lg:leading-snug;
+    }
+
+    .mobile-body {
+        @apply text-base leading-relaxed;
+        @apply sm:text-lg sm:leading-relaxed;
+        @apply lg:text-xl lg:leading-relaxed;
+    }
+
+    .mobile-body-large {
+        @apply text-lg leading-relaxed;
+        @apply sm:text-xl sm:leading-relaxed;
+        @apply lg:text-2xl lg:leading-relaxed;
+    }
+
+    .mobile-caption {
+        @apply text-sm leading-normal;
+        @apply sm:text-base sm:leading-normal;
+    }
+
+    /* Mobile-optimized spacing */
+    .mobile-section {
+        @apply py-8 px-4;
+        @apply sm:py-12 sm:px-6;
+        @apply md:py-16 md:px-8;
+        @apply lg:py-20 lg:px-8;
+    }
+
+    .mobile-container {
+        @apply mx-auto px-4;
+        @apply sm:px-6;
+        @apply lg:px-8;
+        @apply max-w-7xl;
+    }
+
+    .mobile-card {
+        @apply p-4 m-2;
+        @apply sm:p-6 sm:m-4;
+        @apply lg:p-8 lg:m-6;
+    }
+
+    .mobile-gap {
+        @apply space-y-4;
+        @apply sm:space-y-6;
+        @apply lg:space-y-8;
+    }
+
+    .mobile-gap-sm {
+        @apply space-y-2;
+        @apply sm:space-y-3;
+        @apply lg:space-y-4;
+    }
+
+    /* Improved mobile readability */
+    .mobile-prose {
+        @apply text-base leading-7;
+        @apply sm:text-lg sm:leading-8;
+        @apply lg:text-xl lg:leading-9;
+    }
+
+    .mobile-prose p {
+        @apply mb-4;
+        @apply sm:mb-5;
+        @apply lg:mb-6;
+    }
+
+    .mobile-prose h1, .mobile-prose h2, .mobile-prose h3 {
+        @apply mt-6 mb-3;
+        @apply sm:mt-8 sm:mb-4;
+        @apply lg:mt-10 lg:mb-5;
+    }
+}

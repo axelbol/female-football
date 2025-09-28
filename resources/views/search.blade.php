@@ -21,6 +21,12 @@
         <!-- Header -->
         @include('partials.header')
 
+        <!-- Pull to Refresh -->
+        @include('partials.pull-to-refresh')
+
+        <!-- Breadcrumbs -->
+        @include('partials.breadcrumbs')
+
         <!-- Search Results Section -->
         <section class="bg-white dark:bg-gray-900 py-16">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -185,5 +191,8 @@
 
         <!-- Footer -->
         @include('partials.footer')
+
+        <!-- Bottom Navigation -->
+        @include('partials.bottom-nav')
     </body>
 </html>

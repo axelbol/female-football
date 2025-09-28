@@ -53,11 +53,20 @@
         <!-- Header -->
         @include('partials.header')
 
+        <!-- Pull to Refresh -->
+        @include('partials.pull-to-refresh')
+
+        <!-- Breadcrumbs -->
+        @include('partials.breadcrumbs')
+
         <!-- Sections -->
         @include('partials.section')
 
         <!-- Footer -->
         @include('partials.footer')
+
+        <!-- Bottom Navigation -->
+        @include('partials.bottom-nav')
 
         @livewireScripts
     </body>

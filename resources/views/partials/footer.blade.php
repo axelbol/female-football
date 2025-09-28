@@ -8,11 +8,11 @@
             Your story could inspire thousands of young girls to chase their football dreams. Join our community of incredible women making a difference.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="{{ route('touch.create') }}" class="bg-white text-emerald-600 px-8 py-3 rounded-lg text-lg font-medium hover:bg-gray-200 transition-colors">
-                Get Started
+            <a href="{{ route('touch.create') }}" class="btn-touch mobile-touch touch-feedback ripple bg-white text-emerald-600 px-10 py-4 rounded-lg text-lg font-medium hover:bg-gray-200">
+                Empezar
             </a>
-            <a href="{{ route('learn') }}" class="border-2 border-white text-white px-8 py-3 rounded-lg text-lg font-medium hover:bg-white/10 transition-colors">
-                Learn More
+            <a href="{{ route('learn') }}" class="btn-touch mobile-touch touch-feedback ripple border-2 border-white text-white px-10 py-4 rounded-lg text-lg font-medium hover:bg-white/10">
+                Saber Más
             </a>
         </div>
     </div>

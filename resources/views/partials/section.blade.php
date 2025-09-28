@@ -1,13 +1,13 @@
 <!-- Hero Section -->
-<section class="relative py-20 lg:py-32">
+<section class="mobile-section relative">
     <div class="absolute inset-0 bg-gradient-to-r from-emerald-600/10 to-teal-600/10 dark:from-emerald-400/5 dark:to-teal-400/5"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="text-center lg:text-left">
-                <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+    <div class="relative mobile-container">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div class="text-center lg:text-left mobile-gap">
+                <h1 class="mobile-heading-1 text-gray-900 dark:text-white mb-4 sm:mb-6">
                     Every Woman Has a <span class="text-emerald-600 dark:text-emerald-400">Story</span>
                 </h1>
-                <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                <p class="mobile-body-large text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
                     Share your journey in football. Inspire the next generation of female athletes with your experiences, challenges, and triumphs on and off the pitch.
                 </p>
                 @livewire('post-search')
@@ -39,13 +39,13 @@
 </section>
 
 <!-- New Story Section ---->
-<section class="py-20 bg-white dark:bg-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+<section class="mobile-section bg-white dark:bg-gray-900">
+    <div class="mobile-container">
+        <div class="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 class="mobile-heading-2 text-gray-900 dark:text-white mb-3 sm:mb-4">
                 Latest Story
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p class="mobile-body text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 Fresh from the pitch - the newest addition to our community of inspiring women
             </p>
         </div>
@@ -57,10 +57,13 @@
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
                         @if($latestPost->hero_image_url)
                             <div class="h-64 lg:h-full overflow-hidden">
-                                <img src="{{ $latestPost->hero_image_url }}"
-                                     alt="{{ $latestPost->title }}"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover">
+                                <x-responsive-image
+                                    :post="$latestPost"
+                                    type="hero"
+                                    :alt="$latestPost->title"
+                                    class="w-full h-full object-cover"
+                                    loading="lazy"
+                                />
                             </div>
                         @else
                             <div class="h-64 lg:h-full bg-gradient-to-br from-rose-400 to-orange-500"></div>
@@ -76,10 +79,10 @@
                                     </span>
                                 @endif
                             </div>
-                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+                            <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-3 sm:mb-4">
                                 {{ $latestPost->title }}
                             </h3>
-                            <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                            <p class="mobile-body text-gray-600 dark:text-gray-300 mb-4 sm:mb-6">
                                 {{ Str::limit($latestPost->excerpt, 150) }}
                             </p>
                             <div class="flex items-center justify-between">
@@ -96,8 +99,8 @@
                                         </span>
                                     </div>
                                 </div>
-                                <a href="{{ route('post.public', $latestPost->slug) }}" class="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
-                                    Read Story
+                                <a href="{{ route('post.public', $latestPost->slug) }}" class="btn-touch mobile-touch touch-feedback ripple bg-emerald-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-emerald-700">
+                                    Leer Historia
                                 </a>
                             </div>
                         </div>
@@ -113,8 +116,8 @@
                         <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
                             Be the first to share your inspiring journey in women's football.
                         </p>
-                        <a href="{{ route('posts.create') }}" class="bg-emerald-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-emerald-700 transition-colors">
-                            Share Your Story
+                        <a href="{{ route('posts.create') }}" class="btn-touch mobile-touch touch-feedback ripple bg-emerald-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-emerald-700">
+                            Comparte tu Historia
                         </a>
                     </div>
                 </div>
@@ -124,18 +127,18 @@
 </section>
 
 <!-- Latest Stories Section -->
-<section class="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+<section class="mobile-section bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    <div class="mobile-container">
+        <div class="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 class="mobile-heading-2 text-gray-900 dark:text-white mb-3 sm:mb-4">
                 Latest Stories
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p class="mobile-body text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 Recent additions from our growing community of women making their mark
             </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
             @forelse($recentPosts as $index => $post)
                 @php
                     $colors = ['violet', 'amber', 'blue', 'rose', 'emerald', 'purple'];
@@ -145,10 +148,13 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                     @if($post->featured_image_url)
                         <div class="h-40 overflow-hidden">
-                            <img src="{{ $post->featured_image_url }}"
-                                 alt="{{ $post->title }}"
-                                 loading="lazy"
-                                 class="w-full h-full object-cover">
+                            <x-responsive-image
+                                :post="$post"
+                                type="featured"
+                                :alt="$post->title"
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
                         </div>
                     @else
                         <div class="h-40 bg-gradient-to-br from-{{ $color }}-400 to-{{ $color === 'violet' ? 'purple' : $color }}-500"></div>
@@ -164,10 +170,10 @@
                                 </span>
                             @endif
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-2 sm:mb-3">
                             {{ $post->title }}
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4 text-sm leading-relaxed">
+                        <p class="mobile-body text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
                             {{ Str::limit($post->excerpt, 100) }}
                         </p>
                         <div class="flex items-center justify-between">
@@ -184,8 +190,8 @@
                                     </span>
                                 </div>
                             </div>
-                            <a href="{{ route('post.public', $post->slug) }}" class="text-{{ $color }}-600 dark:text-{{ $color }}-400 hover:text-{{ $color }}-700 dark:hover:text-{{ $color }}-300 text-sm font-medium">
-                                Read More →
+                            <a href="{{ route('post.public', $post->slug) }}" class="mobile-touch-sm touch-feedback touch-highlight text-{{ $color }}-600 dark:text-{{ $color }}-400 hover:text-{{ $color }}-700 dark:hover:text-{{ $color }}-300 text-sm font-medium rounded-lg">
+                                Leer Más →
                             </a>
                         </div>
                     </div>
@@ -207,19 +213,19 @@
 </section>
 
 <!-- Featured Stories Section -->
-<section id="stories" class="py-20 bg-white/50 dark:bg-gray-900/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+<section id="stories" class="mobile-section bg-white/50 dark:bg-gray-900/50">
+    <div class="mobile-container">
+        <div class="text-center mb-8 sm:mb-12 lg:mb-16">
+            <h2 class="mobile-heading-2 text-gray-900 dark:text-white mb-3 sm:mb-4">
                 Featured Stories
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p class="mobile-body text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
                 Discover incredible journeys from women who've made their mark in football
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @forelse($featuredPosts as $index => $post)
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            @forelse($featuredPosts->items() as $index => $post)
                 @php
                     $featuredColors = ['emerald', 'purple', 'blue', 'rose', 'indigo', 'teal'];
                     $color = $featuredColors[$index % count($featuredColors)];
@@ -237,10 +243,13 @@
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                     @if($post->featured_image_url)
                         <div class="h-48 overflow-hidden">
-                            <img src="{{ $post->featured_image_url }}"
-                                 alt="{{ $post->title }}"
-                                 loading="lazy"
-                                 class="w-full h-full object-cover">
+                            <x-responsive-image
+                                :post="$post"
+                                type="featured"
+                                :alt="$post->title"
+                                class="w-full h-full object-cover"
+                                loading="lazy"
+                            />
                         </div>
                     @else
                         <div class="h-48 bg-gradient-to-br from-{{ $color }}-400 to-{{ $toColor }}-500"></div>
@@ -256,18 +265,18 @@
                                 </span>
                             </div>
                         @endif
-                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                        <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-2 sm:mb-3">
                             {{ $post->title }}
                         </h3>
-                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        <p class="mobile-body text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
                             {{ Str::limit($post->excerpt, 80) }}
                         </p>
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
                                 {{ $post->player_name ?? $post->user->name }}
                             </span>
-                            <a href="{{ route('post.public', $post->slug) }}" class="text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300">
-                                Read More →
+                            <a href="{{ route('post.public', $post->slug) }}" class="mobile-touch-sm touch-feedback touch-highlight text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 rounded-lg">
+                                Leer Más →
                             </a>
                         </div>
                     </div>
@@ -285,6 +294,14 @@
                 </div>
             @endforelse
         </div>
+
+        @if($featuredPosts->hasPages())
+            <div class="mt-8 sm:mt-12 flex justify-center">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+                    {{ $featuredPosts->links('pagination::tailwind') }}
+                </div>
+            </div>
+        @endif
     </div>
 </section>
 

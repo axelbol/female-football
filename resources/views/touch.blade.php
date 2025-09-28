@@ -21,18 +21,24 @@
         <!-- Header -->
         @include('partials.header')
 
+        <!-- Pull to Refresh -->
+        @include('partials.pull-to-refresh')
+
+        <!-- Breadcrumbs -->
+        @include('partials.breadcrumbs')
+
         <!-- Get in Touch Section -->
-        <section class="bg-white dark:bg-gray-900 py-16">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="mobile-section bg-white dark:bg-gray-900">
+            <div class="mobile-container max-w-4xl">
                 <!-- Hero Image -->
-                <div class="relative h-64 md:h-80 rounded-xl overflow-hidden mb-12">
+                <div class="relative h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden mb-8 sm:mb-12">
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
                          alt="Get in Touch"
                          loading="lazy"
                          class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent"></div>
-                    <div class="absolute bottom-6 left-6 right-6">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Get in Touch with Us</h2>
+                    <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                        <h2 class="mobile-heading-2 text-white mb-1 sm:mb-2">Get in Touch with Us</h2>
                     </div>
                 </div>
 
@@ -141,18 +147,18 @@
                         <!-- Submit Button -->
                         <div class="flex flex-col sm:flex-row gap-4 pt-4">
                             <button type="submit"
-                                    class="flex-1 bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
+                                    class="btn-touch mobile-touch touch-feedback ripple flex-1 bg-emerald-600 text-white px-10 py-4 rounded-lg font-semibold hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 shadow-lg">
                                 <span class="flex items-center justify-center space-x-2">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
                                     </svg>
-                                    <span>Send Message</span>
+                                    <span>Enviar Mensaje</span>
                                 </span>
                             </button>
 
                             <a href="{{ route('home') }}"
-                               class="sm:w-auto bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition-colors text-center">
-                                Back to Stories
+                               class="btn-touch mobile-touch touch-feedback touch-highlight sm:w-auto bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-10 py-4 rounded-lg font-semibold hover:bg-gray-200 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 text-center">
+                                Volver a Historias
                             </a>
                         </div>
                     </form>
@@ -200,5 +206,8 @@
 
         <!-- Footer -->
         @include('partials.footer')
+
+        <!-- Bottom Navigation -->
+        @include('partials.bottom-nav')
     </body>
 </html>

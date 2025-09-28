@@ -25,8 +25,7 @@ class HomeController extends Controller
             ->featured()
             ->with(['user', 'category', 'media'])
             ->latest('published_at')
-            ->limit(3)
-            ->get();
+            ->paginate(9);
 
         return view('welcome', compact('latestPost', 'recentPosts', 'featuredPosts'));
     }
