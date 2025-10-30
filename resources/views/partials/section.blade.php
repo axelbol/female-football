@@ -56,7 +56,7 @@
                 <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
                         @if($latestPost->hero_image_url)
-                            <div class="h-64 lg:h-full overflow-hidden">
+                            <a href="{{ route('post.public', $latestPost->slug) }}" class="block h-64 lg:h-full overflow-hidden hover:opacity-90 transition-opacity">
                                 <x-responsive-image
                                     :post="$latestPost"
                                     type="hero"
@@ -64,9 +64,9 @@
                                     class="w-full h-full object-cover"
                                     loading="lazy"
                                 />
-                            </div>
+                            </a>
                         @else
-                            <div class="h-64 lg:h-full bg-gradient-to-br from-rose-400 to-orange-500"></div>
+                            <a href="{{ route('post.public', $latestPost->slug) }}" class="block h-64 lg:h-full bg-gradient-to-br from-rose-400 to-orange-500 hover:opacity-90 transition-opacity"></a>
                         @endif
                         <div class="p-8 lg:p-12 flex flex-col justify-center">
                             <div class="mb-4">
@@ -79,15 +79,19 @@
                                     </span>
                                 @endif
                             </div>
-                            <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-3 sm:mb-4">
-                                {{ $latestPost->title }}
-                            </h3>
-                            <p class="mobile-body text-gray-600 dark:text-gray-300 mb-4 sm:mb-6">
-                                {{ Str::limit($latestPost->excerpt, 150) }}
-                            </p>
+                            <a href="{{ route('post.public', $latestPost->slug) }}" class="block hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-3 sm:mb-4">
+                                    {{ $latestPost->title }}
+                                </h3>
+                            </a>
+                            <a href="{{ route('post.public', $latestPost->slug) }}" class="block hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                                <p class="mobile-body text-gray-600 dark:text-gray-300 mb-4 sm:mb-6">
+                                    {{ Str::limit($latestPost->excerpt, 150) }}
+                                </p>
+                            </a>
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
-                                    <div class="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center">
+                                    <div class="hidden sm:flex w-10 h-10 bg-emerald-600 rounded-full items-center justify-center">
                                         <span class="text-white font-bold text-sm">{{ strtoupper(substr($latestPost->player_name ?? $latestPost->user->name, 0, 2)) }}</span>
                                     </div>
                                     <div>
@@ -99,8 +103,9 @@
                                         </span>
                                     </div>
                                 </div>
-                                <a href="{{ route('post.public', $latestPost->slug) }}" class="btn-touch mobile-touch touch-feedback ripple bg-emerald-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-emerald-700">
-                                    Leer Historia
+                                <a href="{{ route('post.public', $latestPost->slug) }}" class="mobile-touch-sm touch-feedback touch-highlight text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 text-sm font-medium rounded-lg sm:btn-touch sm:mobile-touch sm:ripple sm:bg-emerald-600 sm:text-white sm:px-8 sm:py-3 sm:hover:bg-emerald-700">
+                                    <span class="sm:hidden">Leer Más →</span>
+                                    <span class="hidden sm:inline">Leer Historia</span>
                                 </a>
                             </div>
                         </div>
@@ -147,7 +152,7 @@
                 <!-- Latest Story Card {{ $index + 1 }} -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                     @if($post->featured_image_url)
-                        <div class="h-40 overflow-hidden">
+                        <a href="{{ route('post.public', $post->slug) }}" class="block h-40 overflow-hidden hover:opacity-90 transition-opacity">
                             <x-responsive-image
                                 :post="$post"
                                 type="featured"
@@ -155,9 +160,9 @@
                                 class="w-full h-full object-cover"
                                 loading="lazy"
                             />
-                        </div>
+                        </a>
                     @else
-                        <div class="h-40 bg-gradient-to-br from-{{ $color }}-400 to-{{ $color === 'violet' ? 'purple' : $color }}-500"></div>
+                        <a href="{{ route('post.public', $post->slug) }}" class="block h-40 bg-gradient-to-br from-{{ $color }}-400 to-{{ $color === 'violet' ? 'purple' : $color }}-500 hover:opacity-90 transition-opacity"></a>
                     @endif
                     <div class="p-6">
                         <div class="mb-3">
@@ -170,12 +175,16 @@
                                 </span>
                             @endif
                         </div>
-                        <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-2 sm:mb-3">
-                            {{ $post->title }}
-                        </h3>
-                        <p class="mobile-body text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
-                            {{ Str::limit($post->excerpt, 100) }}
-                        </p>
+                        <a href="{{ route('post.public', $post->slug) }}" class="block hover:text-{{ $color }}-600 dark:hover:text-{{ $color }}-400 transition-colors">
+                            <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-2 sm:mb-3">
+                                {{ $post->title }}
+                            </h3>
+                        </a>
+                        <a href="{{ route('post.public', $post->slug) }}" class="block hover:text-{{ $color }}-600 dark:hover:text-{{ $color }}-400 transition-colors">
+                            <p class="mobile-body text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
+                                {{ Str::limit($post->excerpt, 100) }}
+                            </p>
+                        </a>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
                                 <div class="w-8 h-8 bg-{{ $color }}-600 rounded-full flex items-center justify-center">
@@ -242,7 +251,7 @@
                 <!-- Featured Story Card {{ $index + 1 }} -->
                 <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                     @if($post->featured_image_url)
-                        <div class="h-48 overflow-hidden">
+                        <a href="{{ route('post.public', $post->slug) }}" class="block h-48 overflow-hidden hover:opacity-90 transition-opacity">
                             <x-responsive-image
                                 :post="$post"
                                 type="featured"
@@ -250,9 +259,9 @@
                                 class="w-full h-full object-cover"
                                 loading="lazy"
                             />
-                        </div>
+                        </a>
                     @else
-                        <div class="h-48 bg-gradient-to-br from-{{ $color }}-400 to-{{ $toColor }}-500"></div>
+                        <a href="{{ route('post.public', $post->slug) }}" class="block h-48 bg-gradient-to-br from-{{ $color }}-400 to-{{ $toColor }}-500 hover:opacity-90 transition-opacity"></a>
                     @endif
                     <div class="p-6">
                         @if($post->category)
@@ -265,12 +274,16 @@
                                 </span>
                             </div>
                         @endif
-                        <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-2 sm:mb-3">
-                            {{ $post->title }}
-                        </h3>
-                        <p class="mobile-body text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
-                            {{ Str::limit($post->excerpt, 80) }}
-                        </p>
+                        <a href="{{ route('post.public', $post->slug) }}" class="block hover:text-{{ $color }}-600 dark:hover:text-{{ $color }}-400 transition-colors">
+                            <h3 class="mobile-heading-3 text-gray-900 dark:text-white mb-2 sm:mb-3">
+                                {{ $post->title }}
+                            </h3>
+                        </a>
+                        <a href="{{ route('post.public', $post->slug) }}" class="block hover:text-{{ $color }}-600 dark:hover:text-{{ $color }}-400 transition-colors">
+                            <p class="mobile-body text-gray-600 dark:text-gray-300 mb-3 sm:mb-4">
+                                {{ Str::limit($post->excerpt, 80) }}
+                            </p>
+                        </a>
                         <div class="flex items-center justify-between">
                             <span class="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
                                 {{ $post->player_name ?? $post->user->name }}
