@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Capitanas - Inspiring Stories of Women in Football | Female Football Heroes</title>
-        <meta name="description" content="Discover inspiring stories from women who've made their mark in football. Share your journey, read about female football heroes, and join our community of passionate players.">
-        <meta name="keywords" content="women football, female football players, women soccer, football stories, female athletes, women sports, football inspiration, soccer heroes">
+        <title>Capitanas - Inspiring Stories of Bolivian Women in Football | Bolivian Female Football Heroes</title>
+        <meta name="description" content="Celebra el fútbol femenino boliviano. Descubre las historias inspiradoras de jugadoras de todo el país, comparte tu trayectoria futbolística y únete a una creciente comunidad de futbolistas apasionadas.">
+        <meta name="keywords" content="fútbol femenino Bolivia, women's football Bolivia, futbolistas bolivianas, female soccer Bolivia, mujeres futbol">
         <meta name="author" content="Capitanas">
         <meta name="robots" content="index, follow, max-image-preview:large">
 
@@ -14,8 +14,8 @@
         <link rel="canonical" href="{{ url('/') }}">
 
         <!-- Enhanced Open Graph -->
-        <meta property="og:title" content="Capitanas - Inspiring Stories of Women in Football">
-        <meta property="og:description" content="Discover inspiring stories from women who've made their mark in football. Join our community of passionate female players.">
+        <meta property="og:title" content="Capitanas - Inspiring Stories of Bolivian Women in Football">
+        <meta property="og:description" content="Descubre historias inspiradoras de mujeres bolivianas que han dejado huella en el fútbol. Únete a nuestra comunidad de apasionadas jugadoras.">
         <meta property="og:url" content="{{ url('/') }}">
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Capitanas">
@@ -36,9 +36,8 @@
         <meta name="twitter:image:alt" content="{{ $latestPost->title }}">
         @endif
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" href="/img/logo/football-logo.svg" type="image/png">
+        <link rel="apple-touch-icon" href="/img/logo/football-logo.svg">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">

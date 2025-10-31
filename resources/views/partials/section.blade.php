@@ -5,10 +5,10 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div class="text-center lg:text-left mobile-gap">
                 <h1 class="mobile-heading-1 text-gray-900 dark:text-white mb-4 sm:mb-6">
-                    Every Woman Has a <span class="text-emerald-600 dark:text-emerald-400">Story</span>
+                    Detrás de cada <span class="text-emerald-600 dark:text-emerald-400">mujer deportista</span> hay una historia.
                 </h1>
                 <p class="mobile-body-large text-gray-600 dark:text-gray-300 mb-6 sm:mb-8">
-                    Share your journey in football. Inspire the next generation of female athletes with your experiences, challenges, and triumphs on and off the pitch.
+                    Comparte tu camino en el fútbol. Motiva a la nueva generación de mujeres futbolistas con tus vivencias, los obstáculos superados y tus logros en la cancha y en la vida.
                 </p>
                 @livewire('post-search')
             </div>
@@ -17,19 +17,19 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div class="text-center">
                             <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2" data-count="50" data-suffix="+">0+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-300">Stories Shared</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-300">Historias Compartidas</div>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2" data-count="10" data-suffix="+">0+</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-300">Countries</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-300">Países</div>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2" data-count="80">0</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-300">Athletes</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-300">Atletas</div>
                         </div>
                         <div class="text-center">
                             <div class="text-3xl font-bold text-emerald-600 dark:text-emerald-400 mb-2">∞</div>
-                            <div class="text-sm text-gray-600 dark:text-gray-300">Inspiration</div>
+                            <div class="text-sm text-gray-600 dark:text-gray-300">Inspiración</div>
                         </div>
                     </div>
                 </div>
@@ -43,10 +43,10 @@
     <div class="mobile-container">
         <div class="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 class="mobile-heading-2 text-gray-900 dark:text-white mb-3 sm:mb-4">
-                Latest Story
+                Nuevo Relato
             </h2>
             <p class="mobile-body text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Fresh from the pitch - the newest addition to our community of inspiring women
+                ¡Recién salida de la cancha! Te presentamos a la nueva estrella de nuestra comunidad de mujeres inspiradoras.
             </p>
         </div>
 
@@ -71,7 +71,7 @@
                         <div class="p-8 lg:p-12 flex flex-col justify-center">
                             <div class="mb-4">
                                 <span class="inline-block bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 text-sm font-medium px-3 py-1 rounded-full">
-                                    New Story
+                                    Nuevo relato
                                 </span>
                                 @if($latestPost->category)
                                     <span class="inline-block ml-2 bg-{{ $latestPost->category->color ?? 'gray' }}-100 dark:bg-{{ $latestPost->category->color ?? 'gray' }}-900 text-{{ $latestPost->category->color ?? 'gray' }}-800 dark:text-{{ $latestPost->category->color ?? 'gray' }}-200 text-sm font-medium px-3 py-1 rounded-full">
@@ -136,10 +136,10 @@
     <div class="mobile-container">
         <div class="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 class="mobile-heading-2 text-gray-900 dark:text-white mb-3 sm:mb-4">
-                Latest Stories
+                Últimos Relatos
             </h2>
             <p class="mobile-body text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Recent additions from our growing community of women making their mark
+                Incorporaciones recientes de nuestra creciente comunidad de mujeres que dejan su huella.
             </p>
         </div>
 
@@ -167,7 +167,7 @@
                     <div class="p-6">
                         <div class="mb-3">
                             <span class="inline-block bg-{{ $color }}-100 dark:bg-{{ $color }}-900 text-{{ $color }}-800 dark:text-{{ $color }}-200 text-xs font-medium px-2 py-1 rounded-full">
-                                Recent
+                                Reciente
                             </span>
                             @if($post->category)
                                 <span class="inline-block ml-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-xs font-medium px-2 py-1 rounded-full">
@@ -226,10 +226,10 @@
     <div class="mobile-container">
         <div class="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 class="mobile-heading-2 text-gray-900 dark:text-white mb-3 sm:mb-4">
-                Featured Stories
+                Historias que inspiran
             </h2>
             <p class="mobile-body text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-                Discover incredible journeys from women who've made their mark in football
+                Conoce los caminos increíbles de mujeres que marcaron la diferencia en el deporte.
             </p>
         </div>
 
@@ -270,7 +270,7 @@
                                     {{ $post->category->name }}
                                 </span>
                                 <span class="inline-block ml-1 bg-amber-100 dark:bg-amber-900 text-amber-800 dark:text-amber-200 text-xs font-medium px-2 py-1 rounded-full">
-                                    Featured
+                                    Destacadas
                                 </span>
                             </div>
                         @endif

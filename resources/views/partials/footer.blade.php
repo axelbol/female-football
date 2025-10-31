@@ -2,10 +2,10 @@
 <section class="py-20 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl lg:text-4xl font-bold mb-6">
-            Ready to Share Your Journey?
+            Más que un entrenamiento, es un viaje ¿Nos lo cuentas?
         </h2>
         <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-            Your story could inspire thousands of young girls to chase their football dreams. Join our community of incredible women making a difference.
+            Inspira a la próxima generación. Tu camino en el deporte puede ser la chispa que miles de niñas necesitan. Sé parte de nuestra red de mujeres que dejan huella.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="{{ route('touch.create') }}" class="btn-touch mobile-touch touch-feedback ripple bg-white text-emerald-600 px-10 py-4 rounded-lg text-lg font-medium hover:bg-gray-200">
@@ -28,7 +28,7 @@
                 </a>
             </div>
             <p class="text-gray-400 mb-4">
-                Empowering women's voices in football, one story at a time.
+                Empowering women's voices in sports, one story at a time.
             </p>
             <p class="text-sm text-gray-500">
                 © 2025 Capitanas. All rights reserved.

@@ -5,10 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $post->title }} - Capitanas</title>
     <meta name="description" content="{{ Str::limit($post->excerpt, 155) }}">
+    <meta name="author" content="{{ $post->player_name ?? $post->user->name }}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ $post->title }}">
+    <meta property="og:description" content="{{ Str::limit($post->excerpt, 200) }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Capitanas">
+    <meta property="og:locale" content="en_US">
+    @if($post->featured_image_url)
+    <meta property="og:image" content="{{ $post->featured_image_url }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ $post->title }}">
+    @endif
+    @if($post->published_at)
+    <meta property="article:published_time" content="{{ $post->published_at->toIso8601String() }}">
+    @endif
+    @if($post->updated_at)
+    <meta property="article:modified_time" content="{{ $post->updated_at->toIso8601String() }}">
+    @endif
+    @if($post->category)
+    <meta property="article:section" content="{{ $post->category->name }}">
+    @endif
+    <meta property="article:author" content="{{ $post->player_name ?? $post->user->name }}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $post->title }}">
+    <meta name="twitter:description" content="{{ Str::limit($post->excerpt, 200) }}">
+    @if($post->featured_image_url)
+    <meta name="twitter:image" content="{{ $post->featured_image_url }}">
+    <meta name="twitter:image:alt" content="{{ $post->title }}">
+    @endif
+
+    <link rel="icon" href="/img/logo/football-logo.svg" type="image/png">
+    <link rel="apple-touch-icon" href="/img/logo/football-logo.svg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">

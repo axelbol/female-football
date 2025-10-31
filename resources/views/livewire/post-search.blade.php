@@ -8,7 +8,7 @@
         <input type="text"
                wire:model.live.debounce.300ms="search"
                class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg leading-5 bg-white dark:bg-gray-800 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 text-lg"
-               placeholder="Search for players, stories..."
+               placeholder="Busca deportista ..."
                autocomplete="off">
 
         @if($search)

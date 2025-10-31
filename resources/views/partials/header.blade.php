@@ -14,9 +14,9 @@
                         Dashboard
                     </a>
                 @else
-                    <a href="{{ route('home') }}" class="btn-touch touch-feedback touch-highlight text-gray-700 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-6 py-3 text-base font-medium rounded-lg">
+                    {{-- <a href="{{ route('home') }}" class="btn-touch touch-feedback touch-highlight text-gray-700 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-6 py-3 text-base font-medium rounded-lg">
                         Inicio
-                    </a>
+                    </a> --}}
                     <a href="{{ route('learn') }}" class="btn-touch touch-feedback touch-highlight text-gray-700 hover:text-emerald-600 dark:text-gray-300 dark:hover:text-emerald-400 px-6 py-3 text-base font-medium rounded-lg">
                         Conócenos
                     </a>
