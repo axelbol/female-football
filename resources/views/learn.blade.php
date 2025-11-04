@@ -4,11 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Her Game</title>
+        <title>Capitanas - Inspiring Stories of Bolivian Women in Football | Bolivian Female Football Heroes</title>
+        <meta name="description" content="Celebra el fútbol femenino boliviano. Descubre las historias inspiradoras de jugadoras de todo el país, comparte tu trayectoria futbolística y únete a una creciente comunidad de futbolistas apasionadas.">
+        <meta name="keywords" content="fútbol femenino Bolivia, women's football Bolivia, futbolistas bolivianas, female soccer Bolivia, mujeres futbol">
+        <meta name="author" content="Capitanas">
+        <meta name="robots" content="index, follow, max-image-preview:large">
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" href="/img/logo/football-logo.svg" type="image/png">
+        <link rel="apple-touch-icon" href="/img/logo/football-logo.svg">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -40,40 +43,40 @@
 
                 <!-- Title -->
                 <h1 class="mobile-heading-1 text-center mb-6 sm:mb-8 text-gray-800 dark:text-gray-100">
-                    Learn More About Us
+                    Conozca más sobre nosotros
                 </h1>
 
                 <!-- Content -->
                 <div class="mobile-prose max-w-none text-gray-700 dark:text-gray-300">
                     <div class="text-center mb-8 sm:mb-12">
                         <p class="mobile-body-large">
-                            We are passionate about celebrating and empowering women in football. Our mission is to shine a spotlight on the incredible talent, dedication, and achievements of female footballers around the world.
+                            Nos apasiona celebrar y empoderar a las mujeres en el deporte. Nuestra misión es destacar el increíble talento, la dedicación y los logros de las deportistas de todo el mundo.
                         </p>
                     </div>
 
                     <div class="grid md:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
                         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                            <h3 class="text-2xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">Our Vision</h3>
+                            <h3 class="text-2xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">Nuestra Misión</h3>
                             <p>
-                                We envision a world where women's football receives the recognition, support, and resources it deserves. Through storytelling, data, and community building, we aim to elevate the beautiful game as played by women.
+                                Imaginamos un mundo donde el deporte femenino reciba el reconocimiento, el apoyo y los recursos que merece. A través de historias, datos y la creación de comunidad, buscamos enaltecer el deporte practicado por mujeres.
                             </p>
                         </div>
 
                         <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                            <h3 class="text-2xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">What We Do</h3>
+                            <h3 class="text-2xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">Lo que Hacemos</h3>
                             <p>
-                                We provide comprehensive coverage of women's football, from grassroots to professional levels. Our platform features player profiles, match analyses, league statistics, and inspiring stories that showcase the depth and quality of the women's game.
+                                Ofrecemos una cobertura completa del deporte femenino, desde las categorías inferiores hasta el nivel profesional. Nuestra plataforma incluye perfiles de jugadoras, análisis, estadísticas de ligas e historias inspiradoras que demuestran la profundidad y la calidad del deporte femenino.
                             </p>
                         </div>
                     </div>
 
                     <div class="text-center bg-emerald-50 dark:bg-gray-800 p-8 rounded-lg">
-                        <h3 class="text-2xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">Join Our Community</h3>
+                        <h3 class="text-2xl font-semibold mb-4 text-emerald-600 dark:text-emerald-400">Únete a Nuestra Comunidad</h3>
                         <p class="mb-6">
-                            Whether you're a player, coach, fan, or simply someone who believes in equality in sports, we want to get to know you. Together, we can continue to grow the women's football community and inspire the next generation of female athletes.
+                            Ya seas deportista, entrenadora, aficionada o simplemente creas en la igualdad en el deporte, queremos conocerte. Juntas, podemos seguir impulsando el crecimiento del deporte femenino e inspirar a la próxima generación de atletas.
                         </p>
                         <p class="text-lg font-medium text-gray-800 dark:text-gray-200">
-                            Because every woman deserves her moment on the pitch.
+                            Porque toda mujer merece su momento en el campo.
                         </p>
                     </div>
                 </div>

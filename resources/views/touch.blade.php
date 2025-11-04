@@ -4,11 +4,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Her Game</title>
+        <title>Capitanas - Inspiring Stories of Bolivian Women in Football | Bolivian Female Football Heroes</title>
+        <meta name="description" content="Celebra el fútbol femenino boliviano. Descubre las historias inspiradoras de jugadoras de todo el país, comparte tu trayectoria futbolística y únete a una creciente comunidad de futbolistas apasionadas.">
+        <meta name="keywords" content="fútbol femenino Bolivia, women's football Bolivia, futbolistas bolivianas, female soccer Bolivia, mujeres futbol">
+        <meta name="author" content="Capitanas">
+        <meta name="robots" content="index, follow, max-image-preview:large">
 
-        <link rel="icon" href="/favicon.ico" sizes="any">
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="icon" href="/img/logo/football-logo.svg" type="image/png">
+        <link rel="apple-touch-icon" href="/img/logo/football-logo.svg">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
