@@ -310,9 +310,7 @@
 
         @if($featuredPosts->hasPages())
             <div class="mt-8 sm:mt-12 flex justify-center">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-                    {{ $featuredPosts->links('pagination::tailwind') }}
-                </div>
+                {{ $featuredPosts->links('vendor.pagination.custom') }}
             </div>
         @endif
     </div>
