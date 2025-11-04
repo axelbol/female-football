@@ -38,7 +38,7 @@
                          class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent"></div>
                     <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-                        <h2 class="mobile-heading-2 text-white mb-1 sm:mb-2">Get in Touch with Us</h2>
+                        <h2 class="mobile-heading-2 text-white mb-1 sm:mb-2">Ponte en Contacto con Nosotros</h2>
                     </div>
                 </div>
 
@@ -59,8 +59,8 @@
                     @endif
 
                     <p class="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                        Put your Instagram account so we can get in touch with you and share your history in <span class="font-semibold text-emerald-600 dark:text-emerald-400">Capitanas</span>.
-                        If you don't have an IG account, write your email or WhatsApp number so we can reach you.
+                        Comparte tu cuenta de Instagram para que podamos contactarte y conocer tu historia en <span class="font-semibold text-emerald-600 dark:text-emerald-400">Capitanas</span>.
+                        Si no tienes cuenta de Instagram, escribe tu correo electrónico o número de WhatsApp para que podamos comunicarnos contigo.
                     </p>
                 </div>
 
@@ -72,7 +72,7 @@
                         <!-- Instagram Account -->
                         <div>
                             <label for="ig_account" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                Instagram Account
+                                Cuenta de Instagram
                             </label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -84,7 +84,7 @@
                                        id="ig_account"
                                        name="ig_account"
                                        value="{{ old('ig_account') }}"
-                                       placeholder="@your_instagram_handle"
+                                       placeholder="@tu_cuenta_instagram"
                                        class="block w-full pl-10 pr-3 py-3 border @error('ig_account') border-red-500 @else border-gray-300 dark:border-gray-600 @enderror rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors">
                             </div>
                             @error('ig_account')
@@ -95,7 +95,7 @@
                         <!-- Alternative Contact -->
                         <div>
                             <label for="alternative_contact" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                Alternative Contact (Email or WhatsApp)
+                                Contacto Alternativo (Correo o WhatsApp)
                             </label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -107,7 +107,7 @@
                                        id="alternative_contact"
                                        name="alternative_contact"
                                        value="{{ old('alternative_contact') }}"
-                                       placeholder="your.email@example.com or +1234567890"
+                                       placeholder="email@example.com or 79557865"
                                        class="block w-full pl-10 pr-3 py-3 border @error('alternative_contact') border-red-500 @else border-gray-300 dark:border-gray-600 @enderror rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors">
                             </div>
                             @error('alternative_contact')
@@ -118,12 +118,12 @@
                         <!-- Comments -->
                         <div>
                             <label for="comments" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                Comments or Suggestions
+                                Comentarios o Sugerencias
                             </label>
                             <textarea id="comments"
                                       name="comments"
                                       rows="6"
-                                      placeholder="Tell us your story, share your suggestions, or let us know how we can help..."
+                                      placeholder="Cuéntanos tu historia, comparte tus sugerencias o dinos cómo podemos ayudarte..."
                                       class="block w-full px-3 py-3 border @error('comments') border-red-500 @else border-gray-300 dark:border-gray-600 @enderror rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none">{{ old('comments') }}</textarea>
                             @error('comments')
                                 <p class="mt-1 text-sm text-red-600 dark:text-red-400">{{ $message }}</p>
@@ -138,7 +138,7 @@
                                 </svg>
                                 <div>
                                     <p class="text-sm text-emerald-800 dark:text-emerald-200">
-                                        <span class="font-medium">Privacy Protected:</span> Your information will only be used to contact you about featuring your story in Capitanas. We respect your privacy and won't share your details with third parties.
+                                        <span class="font-medium">Privacidad Protegida:</span> Tú información se utilizará únicamente para contactarte en relación con la publicación de su historia en Capitanas. Respetamos su privacidad y no compartiremos sus datos con terceros.
                                     </p>
                                 </div>
                             </div>
@@ -174,8 +174,8 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Quick Response</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">We'll get back to you within 48 hours</p>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Respuesta Rápida</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Le responderemos en un plazo de 48 horas.</p>
                         </div>
 
                         <!-- Community -->
@@ -185,8 +185,8 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Join Our Community</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Be part of the Capitanas story</p>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Únete a nuestra comunidad</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Sé parte de la historia de Capitanas</p>
                         </div>
 
                         <!-- Share -->
@@ -196,8 +196,8 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
                                 </svg>
                             </div>
-                            <h3 class="font-semibold text-gray-900 dark:text-white">Share Your Story</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-400">Inspire others with your journey</p>
+                            <h3 class="font-semibold text-gray-900 dark:text-white">Comparte tu historia</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Inspira a otros con tu viaje.</p>
                         </div>
                     </div>
                 </div>
