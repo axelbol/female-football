@@ -92,7 +92,7 @@
                     :post="$post"
                     type="featured"
                     :alt="$post->title"
-                    class="w-full h-48 sm:h-64 lg:h-80 object-cover rounded-xl shadow-lg"
+                    class="w-full h-auto object-contain rounded-xl shadow-lg"
                     loading="lazy"
                 />
             </div>
