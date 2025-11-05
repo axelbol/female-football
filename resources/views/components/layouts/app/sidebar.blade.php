@@ -21,10 +21,13 @@
                         <flux:navlist.item icon="tag" :href="route('categories.index')" :current="request()->routeIs('categories.*')" wire:navigate>{{ __('Categories') }}</flux:navlist.item>
                     @endif
                     @if(auth()->user()->isAdmin() || auth()->user()->isEditor())
-                        <flux:navlist.item icon="tag" :href="route('posts.index')" :current="request()->routeIs('posts.*')" wire:navigate>{{ __('Posts') }}</flux:navlist.item>
+                        <flux:navlist.item icon="bolt" :href="route('posts.index')" :current="request()->routeIs('posts.*')" wire:navigate>{{ __('Posts') }}</flux:navlist.item>
                     @endif
                     @if(auth()->user()->isAdmin() || auth()->user()->isEditor())
-                        <flux:navlist.item icon="tag" :href="route('analytics.dashboard')" :current="request()->routeIs('analytics.*')" wire:navigate>{{ __('Analytics') }}</flux:navlist.item>
+                        <flux:navlist.item icon="chart-bar" :href="route('analytics.dashboard')" :current="request()->routeIs('analytics.*')" wire:navigate>{{ __('Analytics') }}</flux:navlist.item>
+                    @endif
+                    @if(auth()->user()->isAdmin())
+                        <flux:navlist.item icon="user-circle" :href="route('touches.index')" :current="request()->routeIs('touches.*')" wire:navigate>{{ __('Contact') }}</flux:navlist.item>
                     @endif
                 </flux:navlist.group>
             </flux:navlist>
