@@ -105,7 +105,66 @@
                 @endif
 
                 <div class="mobile-body">
-                    {!! $post->content !!}
+                    @php
+                        $content = $post->content;
+                        $heroImage = $post->hero_image_url;
+                        $firstHalf = '';
+                        $secondHalf = '';
+                        $canSplit = false;
+
+                        // Debug: check values
+                        // dd(['heroImage' => $heroImage, 'content' => substr($content, 0, 100)]);
+
+                        if ($heroImage && $content) {
+                            $dom = new DOMDocument();
+                            libxml_use_internal_errors(true);
+                            $dom->loadHTML('<?xml encoding="UTF-8"><body>' . $content . '</body>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+                            libxml_clear_errors();
+
+                            $body = $dom->getElementsByTagName('body')->item(0);
+
+                            if ($body && $body->childNodes && $body->childNodes->length > 0) {
+                                $children = $body->childNodes;
+                                $totalNodes = $children->length;
+                                $middlePoint = max(1, (int)floor($totalNodes / 2));
+
+                                // Build the two halves
+                                for ($i = 0; $i < $totalNodes; $i++) {
+                                    $node = $children->item($i);
+                                    $nodeHtml = $dom->saveHTML($node);
+
+                                    if ($i < $middlePoint) {
+                                        $firstHalf .= $nodeHtml;
+                                    } else {
+                                        $secondHalf .= $nodeHtml;
+                                    }
+                                }
+
+                                // Only split if we have content in both halves
+                                if (trim(strip_tags($firstHalf)) && trim(strip_tags($secondHalf))) {
+                                    $canSplit = true;
+                                }
+                            }
+                        }
+                    @endphp
+
+                    @if($heroImage && $canSplit)
+                        {!! $firstHalf !!}
+
+                        <div class="my-6 sm:my-8">
+                            <x-responsive-image
+                                :post="$post"
+                                type="hero"
+                                :alt="$post->title"
+                                class="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-xl shadow-lg"
+                                loading="lazy"
+                            />
+                        </div>
+
+                        {!! $secondHalf !!}
+                    @else
+                        {!! $post->content !!}
+                    @endif
                 </div>
             </article>
 
