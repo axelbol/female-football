@@ -15,15 +15,15 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         $adminRole = Role::where('slug', 'admin')->first();
-        
+
         if (!$adminRole) {
             return;
         }
 
         $adminUser = User::create([
             'name' => 'Admin User',
-            'email' => 'admin@femalefootball.com',
-            'password' => 'password123'
+            'email' => 'female@football.com',
+            'password' => 'femalefootball2018'
         ]);
 
         $adminUser->roles()->attach($adminRole->id);

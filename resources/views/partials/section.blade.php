@@ -187,8 +187,8 @@
                         </a>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-2">
-                                <div class="w-8 h-8 bg-{{ $color }}-600 rounded-full flex items-center justify-center">
-                                    <span class="text-white font-bold text-xs">{{ strtoupper(substr($post->player_name ?? $post->user->name, 0, 2)) }}</span>
+                                <div class="hidden w-8 h-8 bg-emerald-600 rounded-full sm:flex items-center justify-center">
+                                    <span class="text-white dark:text-emerald-400 font-bold text-xs">{{ strtoupper(substr($post->player_name ?? $post->user->name, 0, 2)) }}</span>
                                 </div>
                                 <div>
                                     <span class="text-{{ $color }}-600 dark:text-{{ $color }}-400 font-medium text-sm block">
