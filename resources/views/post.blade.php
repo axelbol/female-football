@@ -78,7 +78,7 @@
                             {{ $post->category->name }}
                         </span>
                     @endif
-                    <span>Por {{ $post->player_name ?? $post->user->name }}</span>
+                    <span>Por {{ $post->user->name }}</span>
                     <span>{{ $post->published_at ? $post->published_at->format('d M Y') : $post->created_at->format('d M Y') }}</span>
                     @if($post->read_time)
                         <span>{{ $post->read_time }} min de lectura</span>
@@ -172,7 +172,7 @@
             <footer class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     <div class="text-sm text-gray-600 dark:text-gray-400">
-                        <p>Publicado por <span class="font-medium text-gray-900 dark:text-white">{{ $post->player_name ?? $post->user->name }}</span></p>
+                        <p>Publicado por <span class="font-medium text-gray-900 dark:text-white">{{ $post->user->name }}</span></p>
                         <p>{{ $post->published_at ? $post->published_at->format('d \d\e F \d\e Y') : $post->created_at->format('d \d\e F \d\e Y') }}</p>
                     </div>
 

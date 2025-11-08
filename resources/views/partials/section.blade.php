@@ -192,7 +192,7 @@
                                 </div>
                                 <div>
                                     <span class="text-{{ $color }}-600 dark:text-{{ $color }}-400 font-medium text-sm block">
-                                        {{ $post->player_name ?? $post->user->name }}
+                                        {{ $post->user->name }}
                                     </span>
                                     <span class="text-xs text-gray-500 dark:text-gray-400">
                                         {{ $post->published_at->diffForHumans() }}

@@ -22,9 +22,9 @@ class HomeController extends Controller
             ->get();
 
         $featuredPosts = Post::published()
-            ->featured()
             ->with(['user', 'category', 'media'])
             ->latest('published_at')
+            ->skip(3)
             ->paginate(9);
 
         return view('welcome', compact('latestPost', 'recentPosts', 'featuredPosts'));
