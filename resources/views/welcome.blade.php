@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Capitanas - Inspiring Stories of Bolivian Women in Football | Bolivian Female Football Heroes</title>
+        <title>Capitanas - Inspiring Stories of Bolivian Women in Football</title>
         <meta name="description" content="Celebra el fútbol femenino boliviano. Descubre las historias inspiradoras de jugadoras de todo el país, comparte tu trayectoria futbolística y únete a una creciente comunidad de futbolistas apasionadas.">
         <meta name="keywords" content="fútbol femenino Bolivia, women's football Bolivia, futbolistas bolivianas, female soccer Bolivia, mujeres futbol">
         <meta name="author" content="Capitanas">

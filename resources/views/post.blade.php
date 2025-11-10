@@ -209,17 +209,38 @@
     <script>
         function shareOnTwitter() {
             const url = encodeURIComponent(window.location.href);
-            const text = encodeURIComponent('{{ $post->title }} - Capitanas');
-            window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank', 'width=600,height=400');
+            const text = encodeURIComponent({!! json_encode($post->title . ' - Capitanas') !!});
+            const shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`;
+
+            const popup = window.open(shareUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+
+            if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+                window.location.href = shareUrl;
+            }
         }
 
         function shareOnFacebook() {
             const url = encodeURIComponent(window.location.href);
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+            const shareUrl = `https://www.facebook.com/dialog/share?app_id={{ config('services.facebook.app_id', '') }}&href=${url}&display=popup`;
+
+            const popup = window.open(shareUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
+
+            if (!popup || popup.closed || typeof popup.closed === 'undefined') {
+                const fallbackUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+                window.location.href = fallbackUrl;
+            }
         }
 
         function copyToClipboard() {
             navigator.clipboard.writeText(window.location.href).then(() => {
+                alert('¡Enlace copiado al portapapeles!');
+            }).catch((err) => {
+                const tempInput = document.createElement('input');
+                tempInput.value = window.location.href;
+                document.body.appendChild(tempInput);
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
                 alert('¡Enlace copiado al portapapeles!');
             });
         }
