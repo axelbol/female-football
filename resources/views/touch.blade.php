@@ -35,10 +35,12 @@
             <div class="mobile-container max-w-4xl">
                 <!-- Hero Image -->
                 <div class="relative h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden mb-8 sm:mb-12">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
-                         alt="Get in Touch"
-                         loading="lazy"
-                         class="w-full h-full object-cover">
+                    <img
+                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80"
+                        alt="Get in Touch"
+                        loading="lazy"
+                        class="w-full h-full object-cover"
+                    >
                     <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/70 to-transparent"></div>
                     <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
                         <h2 class="mobile-heading-2 text-white mb-1 sm:mb-2">Ponte en Contacto con Nosotros</h2>
